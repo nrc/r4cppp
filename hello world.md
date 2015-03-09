@@ -1,3 +1,5 @@
+# Introduction - hello world!
+
 This is the first in a series of blog posts (none written yet) which aim to help
 experienced C++ programmers learn Rust. Expect updates to be sporadic at best.
 In this first blog post we'll just get setup and do a few super basic things.
@@ -45,13 +47,13 @@ fn main() {
 }
 ```
 
-`let is used to introduce a variable, world is the variable name and it is a
-`string (technically the type is &'static str, but more on that in a later
-`post). We don't need to specify the type, it will be inferred for us.
+`let` is used to introduce a variable, world is the variable name and it is a
+string (technically the type is `&'static str`, but more on that in a later
+post). We don't need to specify the type, it will be inferred for us.
 
 Using `{}` in the `println!` statement is like using `%s` in printf. In fact, it
 is a bit more general than that because Rust will try to convert the variable to
-a string if it is not one already*. You can easily play around with this sort of
+a string if it is not one already<sup>[1](#1)</sup>. You can easily play around with this sort of
 thing - try multiple strings and using numbers (integer and float literals will
 work).
 
@@ -92,3 +94,12 @@ function body (or any other body, we'll see more of this later) is not finished
 with a semicolon, then it is the return value. So `foo` will always return
 "world". The `return` keyword still exists so we can do early returns. You can
 replace `"world"` with `return "world";` and it will have the same effect.
+
+##### 1
+
+This is a programmer specified conversion which uses the `Show` trait, which
+works a bit like `toString` in Java. You can also use `{:?}` which gives a
+compiler generated representation which is sometimes useful for debugging. As
+with printf, there are many other options.
+
+TODO check this footnote hack works

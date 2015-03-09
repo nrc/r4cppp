@@ -74,9 +74,16 @@ for more detailed instructions.
 
 ## Contents
 
-1 [Hello world!](TODO)
-TODO
-1 []()
+1. [Hello world!](TODO)
+1. [Intermission - why Rust?](TODO)
+1. [Control flow](TODO)
+1. [Primitive types and operators](TODO)
+1. [Unique pointers](TODO)
+1. [Borrowed pointers](TODO)
+1. [Rc and raw pointers](TODO)
+1. [Data types](TODO)
+1. [Destructuring pt 1](TODO)
+1. [Destructuring pt 2](TODO)
 
 
 ## Contributing
@@ -91,7 +98,7 @@ could be improved in those ways.
 
 If you'd like to contribute a paragraph, section, or chapter please do! If you
 want ideas for things to cover, see the [list of issues](https://github.com/nick29581/r4cppp/issues),
-in particular those tagged [newmaterial](https://github.com/nick29581/r4cppp/labels/new%20material).
+in particular those tagged [new material](https://github.com/nick29581/r4cppp/labels/new%20material).
 If you're not sure of something, please get in touch by pinging me here
 (@nick29581) or on irc (nrc, on #rust or #rust- internals).
 
@@ -124,10 +131,7 @@ to have localisations/translations into any language, including American
 English) and be valid GitHub markdown. For advice on writing style, grammar,
 punctuation, etc. see the Oxford Style Manual
 or [The Economist Style Guide](http://www.economist.com/styleguide/introduction).
-Please limit width to 80 columns. Please
-use double newlines to finish a section, but no double space after a full
-stop/period. For Rust code, use an unadorned `\`\`\``, for other code please use
-`\`\`\`C++` [TODO check these look right], etc. I am a fan of the Oxford comma.
+Please limit width to 80 columns. I am a fan of the Oxford comma.
 
 Don't feel like work has to be perfect to be submitted, I'm happy to edit and
 I'm sure other people will be in the future.
