@@ -79,7 +79,7 @@ involving manipulation of a node interior to the graph.
 
 ## `Rc<RefCell<Node>>`
 
-See [full example](TODO).
+See [full example](https://github.com/nrc/r4cppp/blob/master/graphs/src/rc_refcell_graph.rs).
 
 This is the safest option because there is no unsafe code. It is also the least
 efficient and least ergonomic option. I wouldn't really recommend this approach
@@ -124,7 +124,7 @@ pub fn main() {
 
 ## `Rc<Node>`
 
-See [full example](TODO).
+See [full example](https://github.com/nrc/r4cppp/blob/master/graphs/src/rc_graph.rs).
 
 We can make things a lot nicer to work with at the expense of a little unsafe
 code by dumping the `RefCell`. Our invariant for maintaining safety is that the
@@ -175,7 +175,7 @@ pub fn main() {
 
 ## `&Node`
 
-See [full example](TODO).
+See [full example](https://github.com/nrc/r4cppp/blob/master/graphs/src/ref_graph.rs).
 
 Borrowed references are Rust's primary kind of pointer, so it would be nice if
 we could use them in a graph. However, we must think of allocation. Luckily
@@ -288,7 +288,7 @@ to be added to every struct, impl, and function. The lifetime of the graph would
 still need to be specified from outside the module, but hopefully inference
 would take care of most uses (as it does today for function calls).
 
-See [ref_graph_generic_mod.rs](TODO) for how that might look.
+See [ref_graph_generic_mod.rs](https://github.com/nrc/r4cppp/blob/master/graphs/src/ref_graph_generic_mod.rs) for how that might look.
 
 See also this [RFC issue](https://github.com/rust-lang/rfcs/issues/424).
 

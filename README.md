@@ -74,17 +74,17 @@ for more detailed instructions.
 
 ## Contents
 
-1. [Hello world!](TODO)
-1. [Intermission - why Rust?](TODO)
-1. [Control flow](TODO)
-1. [Primitive types and operators](TODO)
-1. [Unique pointers](TODO)
-1. [Borrowed pointers](TODO)
-1. [Rc and raw pointers](TODO)
-1. [Data types](TODO)
-1. [Destructuring pt 1](TODO)
-1. [Destructuring pt 2](TODO)
-1. [Graphs and arena allocation](TODO)
+1. [Hello world!](https://github.com/nrc/r4cppp/blob/master/hello%20world.md)
+1. [Intermission - why Rust?](https://github.com/nrc/r4cppp/blob/master/why%20rust.md)
+1. [Control flow](https://github.com/nrc/r4cppp/blob/master/control%20flow.md)
+1. [Primitive types and operators](https://github.com/nrc/r4cppp/blob/master/primitives.md)
+1. [Unique pointers](https://github.com/nrc/r4cppp/blob/master/unique.md)
+1. [Borrowed pointers](https://github.com/nrc/r4cppp/blob/master/borrowed.md)
+1. [Rc and raw pointers](https://github.com/nrc/r4cppp/blob/master/rc%20raw.md)
+1. [Data types](https://github.com/nrc/r4cppp/blob/master/data%20types.md)
+1. [Destructuring pt 1](https://github.com/nrc/r4cppp/blob/master/destructuring.md)
+1. [Destructuring pt 2](https://github.com/nrc/r4cppp/blob/master/destructuring2.md)
+1. [Graphs and arena allocation](https://github.com/nrc/r4cppp/blob/master/graphs/README.md)
 
 
 ## Contributing
