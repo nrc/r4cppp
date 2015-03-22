@@ -84,6 +84,7 @@ for more detailed instructions.
 1. [Data types](TODO)
 1. [Destructuring pt 1](TODO)
 1. [Destructuring pt 2](TODO)
+1. [Graphs and arena allocation](TODO)
 
 
 ## Contributing

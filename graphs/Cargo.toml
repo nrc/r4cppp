@@ -1,0 +1,8 @@
+[package]
+name = "graphs"
+version = "0.0.1"
+authors = ["nrc <ncameron@mozilla.com>"]
+
+[[bin]]
+name = "graphs"
+path = "src/mod.rs"
