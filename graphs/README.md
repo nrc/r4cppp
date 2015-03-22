@@ -28,8 +28,8 @@ cannot be cyclic, we cannot use `Box<Node>` as our pointer type (as we might do
 for tree-like data structures or linked lists).
 
 That leaves us with three options: reference counting, borrowed references, or
-raw (unsafe) pointers. The reference counted graph can be approached in two ways
-- either using `RefCell` or using unsafe code. The former is safer, the latter
+raw (unsafe) pointers. The reference counted graph can be approached in two ways - 
+either using `RefCell` or using unsafe code. The former is safer, the latter
 is more ergonomic.
 
 Note that if your graph might have cycles, then the `Rc` graphs require further
