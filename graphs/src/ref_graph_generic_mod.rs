@@ -1,19 +1,22 @@
+// Note that this one is hypothetical future Rust and will not compile today.
 
-use std::mem;
+use std::cell::UnsafeCell;
 use std::collections::HashSet;
 use arena::TypedArena;
 
+// Module is parameterised with the lifetime of the graph.
 mod graph<'a> {
     struct Node {
         datum: &'static str,
-        next: Vec<&'a Node<'a>>,
+        // The module-level lifetime is used for the lifetime of each Node.
+        edges: UnsafeCell<Vec<&'a Node>>,
     }
 
     impl Node {
         fn new(datum: &'static str, arena: &'a TypedArena<Node>) -> &'a Node {
             arena.alloc(Node {
                 datum: datum,
-                next: Vec::new(),
+                edges: UnsafeCell::new(Vec::new()),
             })
         }
 
@@ -25,16 +28,24 @@ mod graph<'a> {
             }
             f(self.datum);
             seen.insert(self.datum);
-            for n in &self.next {
-                n.traverse(f, seen);
+            for n in &self.edges {
+                unsafe {
+                    for n in &(*self.edges.get()) {
+                        n.traverse(f, seen);
+                    }
+                }
             }
         }
 
         fn first(&self) -> &Node {
-            &self.next[0]
+            unsafe {
+                (*self.edges.get())[0]
+            }
         }
     }
 
+    // It would be nice if we could rely on lifetime elision and remove the `'a`
+    // on the `foo` and `init` functions.
     fn foo(node: &'a Node) {
         println!("foo: {}", node.datum);
     }
@@ -49,15 +60,13 @@ mod graph<'a> {
         let f = Node::new("F", arena);
 
         unsafe {
-            let mut_root: &mut Node = mem::transmute(root);
-            mut_root.next.push(b);
-            mut_root.next.push(c);
-            mut_root.next.push(d);
+            (*root.edges.get()).push(b);
+            (*root.edges.get()).push(c);
+            (*root.edges.get()).push(d);
 
-            let mut_c: &mut Node = mem::transmute(c);
-            mut_c.next.push(e);
-            mut_c.next.push(f);
-            mut_c.next.push(root);
+            (*c.edges.get()).push(e);
+            (*c.edges.get()).push(f);
+            (*c.edges.get()).push(root);
         }
 
         root
@@ -66,6 +75,8 @@ mod graph<'a> {
 
 pub fn main() {
     let arena = TypedArena::new();
+    // The lifetime of the module is inferred here from the lifetime of the
+    // reference to the arena, i.e., the scope of the main function.
     let g = graph::init(&arena);
     g.traverse(&|d| println!("{}", d), &mut HashSet::new());
     foo(g.first());

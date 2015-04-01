@@ -1,18 +1,18 @@
 
-use std::mem;
+use std::cell::UnsafeCell;
 use std::collections::HashSet;
 use arena::TypedArena;
 
 struct Node<'a> {
     datum: &'static str,
-    next: Vec<&'a Node<'a>>,
+    edges: UnsafeCell<Vec<&'a Node<'a>>>,
 }
 
 impl<'a> Node<'a> {
     fn new<'b>(datum: &'static str, arena: &'b TypedArena<Node<'b>>) -> &'b Node<'b> {
         arena.alloc(Node {
             datum: datum,
-            next: Vec::new(),
+            edges: UnsafeCell::new(Vec::new()),
         })
     }
 
@@ -24,13 +24,17 @@ impl<'a> Node<'a> {
         }
         f(self.datum);
         seen.insert(self.datum);
-        for n in &self.next {
-            n.traverse(f, seen);
+        unsafe {
+            for n in &(*self.edges.get()) {
+                n.traverse(f, seen);
+            }
         }
     }
 
-    fn first<'b>(&'b self) -> &'b Node<'b> {
-        &self.next[0]
+    fn first(&'a self) -> &'a Node<'a> {
+        unsafe {
+            (*self.edges.get())[0]
+        }
     }
 }
 
@@ -48,15 +52,13 @@ fn init<'a>(arena: &'a TypedArena<Node<'a>>) ->&'a Node<'a> {
     let f = Node::new("F", arena);
 
     unsafe {
-        let mut_root: &mut Node = mem::transmute(root);
-        mut_root.next.push(b);
-        mut_root.next.push(c);
-        mut_root.next.push(d);
+        (*root.edges.get()).push(b);
+        (*root.edges.get()).push(c);
+        (*root.edges.get()).push(d);
 
-        let mut_c: &mut Node = mem::transmute(c);
-        mut_c.next.push(e);
-        mut_c.next.push(f);
-        mut_c.next.push(root);
+        (*c.edges.get()).push(e);
+        (*c.edges.get()).push(f);
+        (*c.edges.get()).push(root);
     }
 
     root
