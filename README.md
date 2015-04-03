@@ -38,15 +38,15 @@ catered for.
 ## Installing Rust
 
 The easiest way to install Rust (on Linux and OS X, at least) is to run the rustup
-script. Simply enter the following into your shell:
+script. Simply enter one of the following into your shell:
 
-###Beta Version (Recommended):
+### Beta Version (Recommended)
 ```
 curl -s https://static.rust-lang.org/rustup.sh | sudo sh
 ```
 
-###To get the Nightly Version:
-(Some rust packages(crates) might not have been updataed to beta just yet)
+### To get the Nightly Version
+Some rust packages (crates) might not have been updataed to track rust-beta just yet.
 ```
 curl -s https://static.rust-lang.org/rustup.sh | sudo sh -s -- --channel=nightly
 ```
