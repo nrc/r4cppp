@@ -18,7 +18,7 @@ statement is used when the structure being desctructured can have difference
 variants (such as an enum). A let expression pulls the variables out into the
 current scope, whereas match introduces a new scope. To compare:
 
-```
+```rust
 fn foo(pair: (int, int)) {
     let (x, y) = pair;
     // we can now use x and y anywhere in foo
@@ -35,7 +35,7 @@ The syntax for patterns (used after `let` and before `=>` in the above example)
 in both cases is (pretty much) the same. You can also use these patterns in
 argument position in function declarations:
 
-```
+```rust
 fn foo((x, y): (int, int)) {
 }
 ``
@@ -46,7 +46,7 @@ Most initialisation expressions can appear in a destructuring pattern and they
 can be arbitrarily complex. That can include references and primitive literals
 as well as data structures. For example,
 
-```
+```rust
 struct St {
     f1: int,
     f2: f32
@@ -87,7 +87,7 @@ You can also use `..` to stand in for all fields of a tuple or struct. So if you
 wanted to do something for each enum variant but don't care about the content of
 the variants, you could write:
 
-```
+```rust
 fn foo(x: En) {
     match x {
         Var1 => println!("first variant"),
@@ -101,7 +101,7 @@ fn foo(x: En) {
 When destructuring structs, the fields don't need to be in order and you can use
 `..` to elide the remaining fields. E.g.,
 
-```
+```rust
 struct Big {
     field1: int,
     field2: int,
@@ -124,7 +124,7 @@ As a shorthand with structs you can use just the field name which creates a
 local variable with that name. The let statement in the above example created
 two new local variables `x` and `y`. Alternatively, you could write
 
-```
+```rust
 fn foo(b: Big) {
     let Big { field6, field3, .. } = b;
     println!("pulled out {} and {}", field3, field6);
@@ -139,7 +139,7 @@ reference to a variable in a pattern. You can't use `&` because that matches a
 reference, rather than creates one (and thus has the effect of dereferencing the
 object). For example,
 
-```
+```rust
 struct Foo {
     field: &'static int
 }
@@ -154,7 +154,7 @@ Here, `y` has type `int` and is a copy of the field in `x`.
 To create a reference to something in a pattern, you use the `ref` keyword. For
 example,
 
-```
+```rust
 fn foo(b: Big) {
     let Big { field3: ref x, ref field6, ..} = b;
     println!("pulled out {} and {}", *x, *field6);

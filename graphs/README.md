@@ -100,7 +100,7 @@ exist independently of the graph.
 
 The node structure looks like
 
-```
+```rust
 struct Node {
     datum: &'static str,
     edges: Vec<Rc<RefCell<Node>>>,
@@ -112,7 +112,7 @@ add an edge during initialisation, you have to borrow the start node as mutable,
 and clone the end node into the Vec of edges (this clones the pointer,
 incrementing the reference count, not the actual node). E.g.,
 
-```
+```rust
 let mut mut_root = root.borrow_mut();
 mut_root.edges.push(b.clone());
 ```
@@ -124,7 +124,7 @@ Whenever you access a node, you have to use `.borrow()` to borrow the `RefCell`.
 Our `first` method has to return a ref-counted pointer, rather than a borrowed
 reference, so callers of `first` also have to borrow:
 
-```
+```rust
 fn first(&self) -> Rc<RefCell<Node>> {
     self.edges[0].clone()
 }
@@ -192,7 +192,7 @@ Our node struct must now include the lifetime of the graph, `'a`. We wrap our
 `Vec` of adjacent nodes in an `UnsafeCell` to indicate that we will mutate it
 even when it should be immutable:
 
-```
+```rust
 struct Node<'a> {
     datum: &'static str,
     edges: UnsafeCell<Vec<&'a Node<'a>>>,
@@ -202,7 +202,7 @@ struct Node<'a> {
 Our new function must also use this lifetime and must take as an argument the
 arena which will do the allocation:
 
-```
+```rust
 fn new<'a>(datum: &'static str, arena: &'a TypedArena<Node<'a>>) -> &'a Node<'a> {
     arena.alloc(Node {
         datum: datum,
@@ -222,7 +222,7 @@ keep references to the graph beyond that point).
 
 Adding an edge is a bit different looking:
 
-```
+```rust
 (*root.edges.get()).push(b);
 ```
 
@@ -236,7 +236,7 @@ whole lot has to be wrapped up in an unsafe block.
 
 The interesting part of `traverse` is:
 
-```
+```rust
 for n in &(*self.edges.get()) {
     n.traverse(f, seen);
 }
@@ -252,7 +252,7 @@ using `Rc<RefCell<_>>`, we can return a straightforward borrowed reference to
 the node. That is very convenient. We can reason that the unsafe block is safe
 because we do no mutation and we are post-initialisation.
 
-```
+```rust
 fn first(&'a self) -> &'a Node<'a> {
     unsafe {
         (*self.edges.get())[0]

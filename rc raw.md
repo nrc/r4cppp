@@ -56,7 +56,7 @@ the Gc pointer.
 
 An Rc example:
 
-```
+```rust
 use std::rc::Rc;
 
 fn bar(x: Rc<int>) { }
@@ -85,7 +85,7 @@ approximation, you probably want Cell for primitive data and RefCell for objects
 with move semantics. So, for a mutable, ref-counted int you would use
 `Rc<Cell<int>>`.
 
-## *T - unsafe pointers
+## \*T - unsafe pointers
 
 TODO raw pointers must be const or mut now
 
@@ -118,7 +118,7 @@ would usually enforce, otherwise you risk causing bugs in safe code too.
 
 An example of using an unsafe pointer:
 
-```
+```rust
 fn foo() {
     let x = 5;
     let xp: *int = &5;

@@ -17,7 +17,7 @@ instead of `int` and `uint`). If no suffix is given, Rust tries to infer the
 type. If it can't infer, it uses `int` or `f64` (if there is a decimal point).
 Examples:
 
-```
+```rust
 fn main() {
     let x: bool = true;
     let x = 34;   // type int
@@ -37,7 +37,7 @@ Numeric literals can be given as binary, octal, and hexadecimal, as well as
 decimal. Use the `0b`, `0o`, and `0x` prefixes, respectively. You can use an
 underscore anywhere in a numeric literal and it will be ignored. E.g,
 
-```
+```rust
 fn main() {
     let x = 12;
     let x = 0b1100;
@@ -56,7 +56,7 @@ implicit coercion and subtyping than C++. Rust uses the `as` keyword for
 explicit coercions and casting. Any numeric value can be cast to another numeric
 type. `as` cannot be used to convert between booleans and numeric types. E.g.,
 
-```
+```rust
 fn main() {
     let x = 34u as int;     // cast unsigned int to int
     let x = 10 as f32;      // int to float
