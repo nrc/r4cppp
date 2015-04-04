@@ -33,7 +33,7 @@ but destroys the old value - Rust's type system ensures you can no longer access
 the old value. As examples, `int` has copy semantics and `Box<int>` has move
 semantics:
 
-```
+```rust
     fn foo() {
     let x = 7i;
     let y = x;                // x is copied
@@ -67,7 +67,7 @@ OK, back to match expressions. As I said earlier, if you want to match some `x`
 with type `&T` you can dereference once in the match clause or match the
 reference in every arm of the match expression. Example:
 
-```
+```rust
 enum Enum1 {
     Var1,
     Var2,
@@ -108,7 +108,7 @@ moves don't happen in any match arm. This is accomplished either by ignoring
 data which would move, or making references to it (so we get by-reference
 passing rather than by-move).
 
-```
+```rust
 enum Enum2 {
     // Box has a destructor so Enum2 has move semantics.
     Var1(Box<int>),
@@ -150,7 +150,7 @@ it's not a construct you see very often.
 
 But what about if we want to use the data nested inside `Var1`? We can't write:
 
-```
+```rust
 match *x {
     Var1(y) => {}
     _ => {}
@@ -159,7 +159,7 @@ match *x {
 
 or
 
-```
+```rust
 match x {
     &Var1(y) => {}
     _ => {}
@@ -186,7 +186,7 @@ the first `&`. For example, `Var1(box ref y) => {}`.
 Now lets get more complex. Lets say you want to match against a pair of
 reference-to-enum values. Now we can't use the first approach at all:
 
-```
+```rust
 fn bar(x: &Enum2, y: &Enum2) {
     // Error: x and y are being moved.
     // match (*x, *y) {
@@ -217,7 +217,7 @@ itself. Now moves are OK, because we know no one else has a reference to the
 value (the compiler ensures that if they do, we can't use the value). For
 example,
 
-```
+```rust
 fn baz(x: Enum2) {
     match x {
         Var1(y) => {}

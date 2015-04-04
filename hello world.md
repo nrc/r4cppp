@@ -16,7 +16,7 @@ anyway). Assuming you manage to install things properly, you should then have a
 Now for our first program. Create a file, copy and paste the following into it
 and save it as `hello.rs` or something equally imaginative.
 
-```
+```rust
 fn main() {
     println!("Hello world!");
 }
@@ -40,7 +40,7 @@ included as part of that subset.
 
 Lets change our example a little bit:
 
-```
+```rust
 fn main() {
     let world = "world";
     println!("Hello {}!", world);
@@ -59,7 +59,7 @@ work).
 
 If you like, you can explicitly give the type of `world`:
 
-```
+```rust
 let world: &'static str = "world";
 ```
 
@@ -68,7 +68,7 @@ In C++ we write `T x` to declare a variable `x` with type `T`. In Rust we write
 explicit types in `let` statements, but they are required for function
 arguments. Lets add another function to see it work:
 
-```
+```rust
 fn foo(_x: &'static str) -> &'static str {
     "world"
 }

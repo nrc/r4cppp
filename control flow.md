@@ -10,7 +10,7 @@ expression in a block is not terminated by a semi-colon, then it becomes the
 value of the block). There is no ternary `?` in Rust. So, the following two
 functions do the same thing:
 
-```
+```rust
 fn foo(x: int) -> &'static str {
     let mut result: &'static str;
     if x < 10 {
@@ -40,7 +40,7 @@ You can also write `let x = if ...`, etc.
 
 Rust has while loops, again just like C++:
 
-```
+```rust
 fn main() {
     let mut x = 10;
     while x > 0 {
@@ -53,7 +53,7 @@ fn main() {
 There is no do...while loop in Rust, but we do have the `loop` statement which
 just loops forever:
 
-```
+```rust
 fn main() {
     loop {
         println!("Just looping");   
@@ -72,7 +72,7 @@ iterators, and generics in more detail in the future. For now, know that a
 `Vec<T>` is a sequence of `T`s and `iter()` returns an iterator from anything
 you might reasonably want to iterate over). A simple `for` loop would look like:
 
-```
+```rust
 fn print_all(all: Vec<int>) {
     for a in all.iter() {
         println!("{}", a);
@@ -85,7 +85,7 @@ TODO also &all/all instead of all.iter()
 If we want to index over the indices of `all` (a bit more like a standard C++
 for loop over an array), you could do
 
-```
+```rust
 fn print_all(all: Vec<int>) {
     for i in ..all.len() {
         println!("{}: {}", i, all.get(i));
@@ -101,7 +101,7 @@ Hopefully, it is obvious what the `len` function does. TODO range notation
 Rust has a match expression which is similar to a C++ switch statement, but much
 more powerful. This simple version should look pretty familiar:
 
-```
+```rust
 fn print_some(x: int) {
     match x {
         0 => println!("x is zero"),
@@ -122,7 +122,7 @@ for 0, 1, and 10 and obviously there are lots of other ints which don't get
 matched. In that last arm, `y` is bound to the value being matched (`x` in this
 case). We could also write:
 
-```
+```rust
 fn print_some(x: int) {
     match x {
         x => println!("x is something else {}", x)
@@ -137,7 +137,7 @@ If we don't want to name the variable, we can use `_` for an unnamed variable,
 which is like having a wildcard match. If we don't want to do anything, we can
 provide an empty branch:
 
-```
+```rust
 fn print_some(x: int) {
     match x {
         0 => println!("x is zero"),
@@ -155,7 +155,7 @@ We'll see in later posts that match is extremely powerful. For now I want to
 introduce just a couple more features - the 'or' operator for values and `if`
 clauses on arms. Hopefully an example is self-explanatory:
 
-```
+```rust
 fn print_some_more(x: int) {
     match x {
         0 | 1 | 10 => println!("x is one of zero, one, or ten"),
@@ -169,7 +169,7 @@ fn print_some_more(x: int) {
 Just like `if` expressions, `match` statements are actually expressions so we
 could re-write the last example as:
 
-```
+```rust
 fn print_some_more(x: int) {
     let msg = match x {
         0 | 1 | 10 => "one of zero, one, or ten",

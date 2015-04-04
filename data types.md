@@ -13,7 +13,7 @@ later post, this one is all about data.
 A rust struct is similar to a C struct or a C++ struct without methods. Simply a
 list of named fields. The syntax is best seen with an example:
 
-```
+```rust
 struct S {
     field1: int,
     field2: SomeOtherStruct
@@ -31,7 +31,7 @@ to another struct object in memory.
 Fields in structs are accessed using the `.` operator and their name. An example
 of struct use:
 
-```
+```rust
 fn foo(s1: S, s2: &S) {
     let f = s1.field1;
     if f == s2.field1 {
@@ -47,7 +47,7 @@ need for `->`.
 Structs are initialised using struct literals. These are the name of the struct
 and values for each field. For example,
 
-```
+```rust
 fn foo(sos: SomeOtherStruct) {
     let x = S { field1: 45, field2: sos };  // initialise x with a struct literal
     println!("x.field1 = {}", x.field1);
@@ -60,7 +60,7 @@ structs. So for example, `struct R { r: Option<R> }` is illegal and will cause a
 compiler error (see below for more about Option). If you need such a structure
 then you should use some kind of pointer; cycles with pointers are allowed:
 
-```
+```rust
 struct R {
     r: Option<Box<R>>
 }
@@ -73,7 +73,7 @@ Structs with no fields do not use braces in either their definition or literal
 use. Definitions do need a terminating semi-colon though, presumably just to
 facilitate parsing.
 
-```
+```rust
 struct Empty;
 
 fn foo() {
@@ -90,7 +90,7 @@ integers and `(i32, f32, S)` is a triple. Enum values are initialised in the
 same way as enum types are declared, but with values instead of types for the
 components, e.g., `(4, 5)`. An example:
 
-```
+```rust
 // foo takes a struct and returns a tuple
 fn foo(x: SomeOtherStruct) -> (i32, f32, S) {
     (23, 45.82, S { field1: 54, field2: x })
@@ -99,7 +99,7 @@ fn foo(x: SomeOtherStruct) -> (i32, f32, S) {
 
 Tuples can be used by destructuring using a `let` expression, e.g.,
 
-```
+```rust
 fn bar(x: (int, int)) {
     let (a, b) = x;
     println!("x was ({}, {})", a, b);
@@ -117,7 +117,7 @@ and a semicolon. Such a declaration introduces their name as a type. Their
 fields must be accessed by destructuring (like a tuple), rather than by name.
 Tuple structs are not very common.
 
-```
+```rust
 struct IntPoint (int, int);
 
 fn foo(x: IntPoint) {
@@ -132,7 +132,7 @@ fn foo(x: IntPoint) {
 Enums are types like C++ enums or unions, in that they are types which can take
 multiple values. The simplest kind of enum is just like a C++ enum:
 
-```
+```rust
 enum E1 {
     Var1,
     Var2,
@@ -154,7 +154,7 @@ more like unions than enums in C++. Rust enums are tagged unions rather untagged
 (as in C++), that means you can't mistake one variant of an enum for another at
 runtime. An example:
 
-```
+```rust
 enum Expr {
     Add(int, int),
     Or(bool, bool),
@@ -173,7 +173,7 @@ To use enums we usually use a match expression. Remember that these are similar
 to C++ switch statements. I'll go into more depth on these and other ways to
 destructure data next time. Here's an example:
 
-```
+```rust
 fn bar(e: Expr) {
     match e {
         Add(x, y) => println!("An `Add` variant: {} + {}", x, y),
@@ -203,7 +203,7 @@ use; there is no way to do the equivalent of dereferencing a null pointer. They
 are also more general, you can use them with values as well as pointers. An
 example:
 
-```
+```rust
 use std::rc::Rc;
 
 struct Node {
@@ -234,7 +234,7 @@ Local variables in Rust are immutable by default and can be marked mutable using
 inherited. This means that a field in a struct object is mutable or immutable
 depending on whether the object itself is mutable or immutable. Example:
 
-```
+```rust
 struct S1 {
     field1: int,
     field2: S2
@@ -260,7 +260,7 @@ Inherited mutability in Rust stops at references. This is similar to C++ where
 you can modify a non-const object via a pointer from a const object. If you want
 a reference field to be mutable, you have to use `&mut` on the field type:
 
-```
+```rust
 struct S1 {
     f: int
 }
@@ -320,7 +320,7 @@ variants return an Option - you get `Some(val)` if the value can be borrowed and
 
 Here's an example using a ref-counted pointer to a RefCell (a common use-case):
 
-```
+```rust
 use std::rc::Rc;
 use std::cell::RefCell;
 

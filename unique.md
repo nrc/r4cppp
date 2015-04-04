@@ -13,7 +13,7 @@ and other kinds will be covered in follow up posts.
 
 First, an example without pointers:
 
-```
+```rust
 fn foo() {
     let x = 75;
 
@@ -30,7 +30,7 @@ pointer to `T`. We use the `box` keyword to allocate space on the heap and
 initialise that space with the supplied value. This is similar to `new` in C++.
 For example,
 
-```
+```rust
 fn foo() {
     let x = box 75;
 }
@@ -46,7 +46,7 @@ longer be accessed and the memory pointed at by `x` can be reused.
 
 Owning pointers are dereferenced using the `*` as in C++. E.g.,
 
-```
+```rust
 fn foo() {
     let x = box 75;
     println!("`x` points to {}", *x);
@@ -58,7 +58,7 @@ immutable by default. Unlike C, you can't have a mutable (unique) pointer to
 immutable data or vice-versa. Mutability of the data follows from the pointer.
 E.g.,
 
-```
+```rust
 fn foo() {
     let x = box 75;
     let y = box 42;
@@ -75,7 +75,7 @@ are returned, then their memory will not be freed, i.e., there are no dangling
 pointers in Rust. The memory will not leak however, eventually it must go out of
 scope and then it will be free. E.g.,
 
-```
+```rust
 fn foo() -> Box<int> {
     let x = box 75;
     x
@@ -96,7 +96,7 @@ Owning pointers are unique (also called linear) because there can be only one
 move semantics. When one pointer points at a value, any previous pointer can no
 longer be accessed. E.g.,
 
-```
+```rust
 fn foo() {
     let x = box 75;
     let y = x;
@@ -108,7 +108,7 @@ fn foo() {
 Likewise, if an owning pointer is passed to another function or stored in a
 field it can no longer be accessed:
 
-```
+```rust
 fn bar(y: Box<int>) {}
 
 fn foo() {
@@ -137,7 +137,7 @@ However, method calls automatically dereference, so there is no need for a `->`
 operator or to use `*` for method calls. In this way, Rust pointers are a bit
 similar to both pointers and references in C++. E.g.,
 
-```
+```rust
 fn bar(x: Box<Foo>, y: Box<Box<Box<Box<Foo>>>>) {
     x.foo();
     y.foo();
@@ -148,7 +148,7 @@ Assuming that the type `Foo` has a method `foo()`, both these expressions are OK
 
 Using the `box` operator on an existing value does not take a reference to that value, it copies that value. So,
 
-```
+```rust
 fn foo() {
     let x = 3;
     let mut y = box x;

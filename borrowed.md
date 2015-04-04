@@ -14,7 +14,7 @@ We use the `&` operator to create a borrowed reference and to indicate reference
 types, and `*` to dereference them. The same rules about automatic dereferencing
 apply as for unique pointers. For example,
 
-```
+```rust
 fn foo() {
     let x = &3;   // type: &int
     let y = *x;   // 3, type: int
@@ -34,7 +34,7 @@ no memory gets deleted.
 Borrowed references are not unique - you can have multiple borrowed references
 pointing to the same value. E.g.,
 
-```
+```rust
 fn foo() {
     let x = 5;                // type: int
     let y = &x;               // type: &int
@@ -51,7 +51,7 @@ reference to a value, and you can only have a mutable reference if there are no
 immutable references). You can use mutable reference where an immutable one is
 wanted, but not vice versa. Putting all that together in an example:
 
-```
+```rust
 fn bar(x: &int) { ... }
 fn bar_mut(x: &mut int) { ... }  // &mut int is a reference to an int which
                                  // can be mutated
@@ -87,7 +87,7 @@ be const (or not) independently of the data they point to. This is in contrast
 to unique pointers, where the mutableness of the pointer is linked to the
 mutableness of the data. For example,
 
-```
+```rust
 fn foo() {
     let mut x = 5;
     let mut y = 6;
@@ -111,7 +111,7 @@ borrow. Once the borrowed pointer goes out of scope, the value can be mutated
 again. This is in contrast to unique pointers, which once moved can never be
 used again. For example,
 
-```
+```rust
 fn foo() {
     let mut x = 5;            // type: int
     {
@@ -129,7 +129,7 @@ one variable or pointer. Furthermore, since we have a mutable reference, we
 can't take an immutable reference. That limits how we can use the underlying
 value:
 
-```
+```rust
 fn foo() {
     let mut x = 5;            // type: int
     {
@@ -146,7 +146,7 @@ Unlike C++, Rust won't automatically reference a value for you. So if a function
 takes a parameter by reference, the caller must reference the actual parameter.
 However, pointer types will automatically be converted to a reference:
 
-```
+```rust
 fn foo(x: &int) { ... }
 
 fn bar(x: int, y: Box<int>) {
@@ -188,7 +188,7 @@ by `{}` or functions are bounds on lifetimes - when a variable goes out of scope
 its lifetime ends. If we try to take a reference to a shorter lifetime, such as
 in a narrower scope, the compiler will give us an error. For example,
 
-```
+```rust
 fn foo() {
     let x = 5;
     let mut xr = &x;  // Ok - x and xr have the same lifetime
