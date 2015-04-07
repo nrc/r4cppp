@@ -97,7 +97,7 @@ replace `"world"` with `return "world";` and it will have the same effect.
 
 ##### 1
 
-This is a programmer specified conversion which uses the `Show` trait, which
+This is a programmer specified conversion which uses the `Display` trait, which
 works a bit like `toString` in Java. You can also use `{:?}` which gives a
 compiler generated representation which is sometimes useful for debugging. As
 with printf, there are many other options.
