@@ -38,7 +38,7 @@ argument position in function declarations:
 ```rust
 fn foo((x, y): (int, int)) {
 }
-``
+```
 
 (Which is more useful for structs or tuple-structs than tuples).
 
