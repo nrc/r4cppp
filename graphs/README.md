@@ -159,7 +159,7 @@ section I'll discuss some future directions for the language which could make
 things better.
 
 During construction we will mutate our nodes which might be multiply referenced.
-This is not posisble in safe Rust code, so we must initialise inside an `unsafe`
+This is not possible in safe Rust code, so we must initialise inside an `unsafe`
 block. Since our nodes are mutable and multiply referenced, we must use an
 `UnsafeCell` to communicate to the Rust compiler that it cannot rely on its
 usual invariants.
