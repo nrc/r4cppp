@@ -75,7 +75,7 @@ for more detailed instructions.
 * [#rust irc channel](https://chat.mibbit.com/?server=irc.mozilla.org&channel=%23rust) - probably
   the best place to get quick answers to your Rust questions if you like irc.
 * [Stackoverflow Rust questions](https://stackoverflow.com/questions/tagged/rust) - answers
-  to many beginner and advanced questions about Rust, be careful though - Rust
+  to many beginner and advanced questions about Rust, but be careful though - Rust
   has changed *a lot* over the years and some of the answers might be very out of date.
 
 
@@ -108,21 +108,21 @@ If you'd like to contribute a paragraph, section, or chapter please do! If you
 want ideas for things to cover, see the [list of issues](https://github.com/nick29581/r4cppp/issues),
 in particular those tagged [new material](https://github.com/nick29581/r4cppp/labels/new%20material).
 If you're not sure of something, please get in touch by pinging me here
-(@nick29581) or on irc (nrc, on #rust or #rust- internals).
+(@nick29581) or on irc (nrc, on #rust or #rust-internals).
 
 
 ### Style
 
 Obviously, the intended audience is C++ programmers. The tutorial should
-concentrate on things that will be new to experience C++ programmers, rather
+concentrate on things that will be new to experienced C++ programmers, rather
 than a general audience (although, I don't assume the audience is familiar with
 the most recent versions of C++). I'd like to avoid too much basic material and
 definitely avoid too much overlap with other resources, in particular the Rust
 guide/book.
 
 Work on edge case use cases (e.g., using a different build system from Cargo, or
-writing syntax extensions, using unstable APIs) is definitely welcome. As is in
-depth work on topics already covered at a high level.
+writing syntax extensions, using unstable APIs) is definitely welcome, as is
+in-depth work on topics already covered at a high level.
 
 I'd like to avoid recipe-style examples for converting C++ code to Rust code,
 but small examples of this kind are OK.
