@@ -106,7 +106,7 @@ fn foo() {
 ```
 
 Likewise, if an owning pointer is passed to another function or stored in a
-field it can no longer be accessed:
+field, it can no longer be accessed:
 
 ```rust
 fn bar(y: Box<int>) {}
