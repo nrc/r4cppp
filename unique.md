@@ -106,7 +106,7 @@ fn foo() {
 ```
 
 Likewise, if an owning pointer is passed to another function or stored in a
-field it can no longer be accessed:
+field, it can no longer be accessed:
 
 ```rust
 fn bar(y: Box<int>) {}
@@ -116,7 +116,7 @@ fn foo() {
     bar(x);
     // x can no longer be accessed
     // let z = *x;   // Error.
-    }
+}
 ```
 
 Rust's unique pointers are similar to C++ `std::unique_ptr`s. In Rust, as in
