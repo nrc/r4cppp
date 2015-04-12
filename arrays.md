@@ -263,5 +263,6 @@ with length 100 full of zeros, we'd use `[0; 100]`.
 Similarly for vectors, `vec![42; 100]` would give you a vector with 100
 elements, each with the value 42.
 
-The initial value is not limited to integers, it can be any expression. The
-length must be an integer constant.
+The initial value is not limited to integers, it can be any expression. For
+array initialisers, the length must be an integer constant expression. For
+`vec!`, it can be any expression with type `usize`.
