@@ -91,6 +91,7 @@ for more detailed instructions.
 1. [Data types](https://github.com/nrc/r4cppp/blob/master/data%20types.md)
 1. [Destructuring pt 1](https://github.com/nrc/r4cppp/blob/master/destructuring.md)
 1. [Destructuring pt 2](https://github.com/nrc/r4cppp/blob/master/destructuring2.md)
+1. [Arrays and vecs](https://github.com/nrc/r4cppp/blob/master/arrays.md)
 1. [Graphs and arena allocation](https://github.com/nrc/r4cppp/blob/master/graphs/README.md)
 
 
