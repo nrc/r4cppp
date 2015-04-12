@@ -11,9 +11,9 @@ performance, but be safer and make you more productive.
 
 Concretely, there are many languages out there that you might prefer to use to
 C++: Java, Scala, Haskell, Python, and so forth, but you can't because either
-the level of abstraction is too high - you don't get direct access to memory,
-you are forced to use garbage collection, etc. - or there are performance issues
-- either performance is unpredictable or its simply not fast enough. Rust does
+the level of abstraction is too high (you don't get direct access to memory,
+you are forced to use garbage collection, etc.), or there are performance issues
+(either performance is unpredictable or it's simply not fast enough). Rust does
 not force you to use garbage collection, and as in C++, you get raw pointers to
 memory to play with. Rust subscribes to the 'pay for what you use' philosophy of
 C++. If you don't use a feature, then you don't pay any performance overhead for
