@@ -72,7 +72,7 @@ fn foo() {
 
 Owning pointers can be returned from a function and continue to live on. If they
 are returned, then their memory will not be freed, i.e., there are no dangling
-pointers in Rust. The memory will not leak however, eventually it must go out of
+pointers in Rust. The memory will not leak. However, it will eventually go out of
 scope and then it will be free. E.g.,
 
 ```rust
