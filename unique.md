@@ -116,7 +116,7 @@ fn foo() {
     bar(x);
     // x can no longer be accessed
     // let z = *x;   // Error.
-    }
+}
 ```
 
 Rust's unique pointers are similar to C++ `std::unique_ptr`s. In Rust, as in
