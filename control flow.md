@@ -11,7 +11,7 @@ value of the block). There is no ternary `?` in Rust. So, the following two
 functions do the same thing:
 
 ```rust
-fn foo(x: int) -> &'static str {
+fn foo(x: i32) -> &'static str {
     let mut result: &'static str;
     if x < 10 {
         result = "less than 10";
@@ -21,7 +21,7 @@ fn foo(x: int) -> &'static str {
     return result;
 }
 
-fn bar(x: int) -> &'static str {
+fn bar(x: i32) -> &'static str {
     if x < 10 {
         "less than 10"
     } else {
@@ -67,13 +67,13 @@ Rust has `break` and `continue` just like C++.
 ## For loops
 
 Rust also has `for` loops, but these are a bit different. Lets say you have a
-vector of ints and you want to print them all (we'll cover vectors/arrays,
+vector of integers and you want to print them all (we'll cover vectors/arrays,
 iterators, and generics in more detail in the future. For now, know that a
 `Vec<T>` is a sequence of `T`s and `iter()` returns an iterator from anything
 you might reasonably want to iterate over). A simple `for` loop would look like:
 
 ```rust
-fn print_all(all: Vec<int>) {
+fn print_all(all: Vec<i32>) {
     for a in all.iter() {
         println!("{}", a);
     }
@@ -86,7 +86,7 @@ If we want to index over the indices of `all` (a bit more like a standard C++
 for loop over an array), you could do
 
 ```rust
-fn print_all(all: Vec<int>) {
+fn print_all(all: Vec<i32>) {
     for i in ..all.len() {
         println!("{}: {}", i, all.get(i));
     }
@@ -102,7 +102,7 @@ Rust has a match expression which is similar to a C++ switch statement, but much
 more powerful. This simple version should look pretty familiar:
 
 ```rust
-fn print_some(x: int) {
+fn print_some(x: i32) {
     match x {
         0 => println!("x is zero"),
         1 => println!("x is one"),
@@ -118,12 +118,12 @@ to the expression to execute, and the match arms are separated by `,` (that last
 obvious: the matched patterns must be exhaustive, that is all possible values of
 the matched expression (`x` in the above example) must be covered. Try removing
 the `y => ...` line and see what happens; that is because we only have matches
-for 0, 1, and 10 and obviously there are lots of other ints which don't get
+for 0, 1, and 10, but there are obviously lots of other integers which don't get
 matched. In that last arm, `y` is bound to the value being matched (`x` in this
 case). We could also write:
 
 ```rust
-fn print_some(x: int) {
+fn print_some(x: i32) {
     match x {
         x => println!("x is something else {}", x)
     }
@@ -138,7 +138,7 @@ which is like having a wildcard match. If we don't want to do anything, we can
 provide an empty branch:
 
 ```rust
-fn print_some(x: int) {
+fn print_some(x: i32) {
     match x {
         0 => println!("x is zero"),
         1 => println!("x is one"),
@@ -156,7 +156,7 @@ introduce just a couple more features - the 'or' operator for values and `if`
 clauses on arms. Hopefully an example is self-explanatory:
 
 ```rust
-fn print_some_more(x: int) {
+fn print_some_more(x: i32) {
     match x {
         0 | 1 | 10 => println!("x is one of zero, one, or ten"),
         y if y < 20 => println!("x is less than 20, but not zero, one, or ten"),
@@ -170,7 +170,7 @@ Just like `if` expressions, `match` statements are actually expressions so we
 could re-write the last example as:
 
 ```rust
-fn print_some_more(x: int) {
+fn print_some_more(x: i32) {
     let msg = match x {
         0 | 1 | 10 => "one of zero, one, or ten",
         y if y < 20 => "less than 20, but not zero, one, or ten",
