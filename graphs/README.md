@@ -90,7 +90,7 @@ and `UnsafeCell`. I'll leave the other two combinations as an exercise.
 
 ## `Rc<RefCell<Node>>`
 
-See [full example](https://github.com/nrc/r4cppp/blob/master/graphs/src/rc_graph.rs).
+See [full example](src/rc_graph.rs).
 
 This is the safer option because there is no unsafe code. It is also the least
 efficient and least ergonomic option. It is pretty flexible though, nodes of the
@@ -139,7 +139,7 @@ pub fn main() {
 
 ## `&Node` and `UnsafeCell`
 
-See [full example](https://github.com/nrc/r4cppp/blob/master/graphs/src/ref_graph.rs).
+See [full example](src/ref_graph.rs).
 
 In this approach we use borrowed references as edges. This is nice and ergonomic
 and lets us use our nodes with 'regular' Rust libraries which primarily operate
@@ -297,7 +297,7 @@ to be added to every struct, impl, and function. The lifetime of the graph would
 still need to be specified from outside the module, but hopefully inference
 would take care of most uses (as it does today for function calls).
 
-See [ref_graph_generic_mod.rs](https://github.com/nrc/r4cppp/blob/master/graphs/src/ref_graph_generic_mod.rs) for how that might look.
+See [ref_graph_generic_mod.rs](src/ref_graph_generic_mod.rs) for how that might look.
 (We should also be able to use safe initialisation (proposed above) to remove
 the unsafe code).
 
