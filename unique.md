@@ -26,18 +26,18 @@ means the variable can no longer be accessed and the memory for the variable can
 be reused.
 
 In Rust, for every type `T` we can write `Box<T>` for an owning (aka unique)
-pointer to `T`. We use the `box` keyword to allocate space on the heap and
+pointer to `T`. We use `Box::new(...)` to allocate space on the heap and
 initialise that space with the supplied value. This is similar to `new` in C++.
 For example,
 
 ```rust
 fn foo() {
-    let x = box 75;
+    let x = Box::new(75);
 }
 ```
 
 Here `x` is a pointer to a location on the heap which contains the value `75`.
-`x` has type `Box<int>`; we could have written `let x: Box<int> = box 75;`. This
+`x` has type `Box<int>`; we could have written `let x: Box<int> = Box::new(75);`. This
 is similar to writing `int* x = new int(75);` in C++. Unlike in C++, Rust will
 tidy up the memory for us, so there is no need to call `free` or `delete`.
 Unique pointers behave similarly to values - they are deleted when the variable
@@ -48,7 +48,7 @@ Owning pointers are dereferenced using the `*` as in C++. E.g.,
 
 ```rust
 fn foo() {
-    let x = box 75;
+    let x = Box::new(75);
     println!("`x` points to {}", *x);
 }
 ```
@@ -60,11 +60,11 @@ E.g.,
 
 ```rust
 fn foo() {
-    let x = box 75;
-    let y = box 42;
+    let x = Box::new(75);
+    let y = Box::new(42);
     // x = y;         // Not allowed, x is immutable.
     // *x = 43;       // Not allowed, *x is immutable.
-    let mut x = box 75;
+    let mut x = Box::new(75);
     x = y;            // OK, x is mutable.
     *x = 43;          // OK, *x is mutable.
 }
@@ -76,8 +76,8 @@ pointers in Rust. The memory will not leak. However, it will eventually go out o
 scope and then it will be free. E.g.,
 
 ```rust
-fn foo() -> Box<int> {
-    let x = box 75;
+fn foo() -> Box<i32> {
+    let x = Box::new(75);
     x
 }
 
@@ -98,7 +98,7 @@ longer be accessed. E.g.,
 
 ```rust
 fn foo() {
-    let x = box 75;
+    let x = Box::new(75);
     let y = x;
     // x can no longer be accessed
     // let z = *x;   // Error.
@@ -109,10 +109,11 @@ Likewise, if an owning pointer is passed to another function or stored in a
 field, it can no longer be accessed:
 
 ```rust
-fn bar(y: Box<int>) {}
+fn bar(y: Box<int>) {
+}
 
 fn foo() {
-    let x = box 75;
+    let x = Box::new(75);
     bar(x);
     // x can no longer be accessed
     // let z = *x;   // Error.
@@ -146,12 +147,12 @@ fn bar(x: Box<Foo>, y: Box<Box<Box<Box<Foo>>>>) {
 
 Assuming that the type `Foo` has a method `foo()`, both these expressions are OK.
 
-Using the `box` operator on an existing value does not take a reference to that value, it copies that value. So,
+Calling Box::new() with an existing value does not take a reference to that value, it copies that value. So,
 
 ```rust
 fn foo() {
     let x = 3;
-    let mut y = box x;
+    let mut y = Box::new(x);
     *y = 45;
     println!("x is still {}", x);
 }
