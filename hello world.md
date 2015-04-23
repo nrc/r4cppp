@@ -7,7 +7,7 @@ Much better resources are at the tutorial and reference manual.
 
 First you need to install Rust. You can download a nightly build from
 [http://www.rust-lang.org/install.html](http://www.rust-lang.org/install.html)
-(I recommend the nighlties rather than 'stable' versions - the nightlies are
+(I recommend the nightlies rather than 'stable' versions - the nightlies are
 stable in that they won't crash too much (no more than the stable versions) and
 you're going to have to get used to Rust evolving under you sooner or later
 anyway). Assuming you manage to install things properly, you should then have a
