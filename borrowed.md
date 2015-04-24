@@ -16,13 +16,13 @@ apply as for unique pointers. For example,
 
 ```rust
 fn foo() {
-    let x = &3;   // type: &int
-    let y = *x;   // 3, type: int
+    let x = &3;   // type: &i32
+    let y = *x;   // 3, type: i32
     bar(x, *x);
     bar(&y, y);
 }
 
-fn bar(z: &int, i: int) {
+fn bar(z: &i32, i: i32) {
     // ...
 }
 ```
@@ -36,10 +36,10 @@ pointing to the same value. E.g.,
 
 ```rust
 fn foo() {
-    let x = 5;                // type: int
-    let y = &x;               // type: &int
-    let z = y;                // type: &int
-    let w = y;                // type: &int
+    let x = 5;                // type: i32
+    let y = &x;               // type: &i32
+    let z = y;                // type: &i32
+    let w = y;                // type: &i32
     println!("These should all 5: {} {} {}", *w, *y, *z);
 }
 ```
@@ -52,8 +52,8 @@ immutable references). You can use mutable reference where an immutable one is
 wanted, but not vice versa. Putting all that together in an example:
 
 ```rust
-fn bar(x: &int) { ... }
-fn bar_mut(x: &mut int) { ... }  // &mut int is a reference to an int which
+fn bar(x: &i32) { ... }
+fn bar_mut(x: &mut i32) { ... }  // &mut i32 is a reference to an i32 which
                                  // can be mutated
 
 fn foo() {
@@ -113,9 +113,9 @@ used again. For example,
 
 ```rust
 fn foo() {
-    let mut x = 5;            // type: int
+    let mut x = 5;            // type: i32
     {
-        let y = &x;           // type: &int
+        let y = &x;           // type: &i32
         //x = 4;              // Error - x has been borrowed
         println!("{}", x);    // Ok - x can be read
     }
@@ -131,9 +131,9 @@ value:
 
 ```rust
 fn foo() {
-    let mut x = 5;            // type: int
+    let mut x = 5;            // type: i32
     {
-        let y = &mut x;       // type: &mut int
+        let y = &mut x;       // type: &mut i32
         //x = 4;              // Error - x has been borrowed
         //println!("{}", x);  // Error - requires borrowing x
         let z = *y + x;       // Ok - doesn't require borrowing
@@ -147,11 +147,11 @@ takes a parameter by reference, the caller must reference the actual parameter.
 However, pointer types will automatically be converted to a reference:
 
 ```rust
-fn foo(x: &int) { ... }
+fn foo(x: &i32) { ... }
 
-fn bar(x: int, y: Box<int>) {
+fn bar(x: i32, y: Box<i32>) {
     foo(&x);
-    // foo(x);   // Error - expected &int, found int
+    // foo(x);   // Error - expected &i32, found i32
     foo(y);      // Ok
     foo(&*y);    // Also ok, and more explicit, but not good style
 }
