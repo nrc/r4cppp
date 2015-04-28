@@ -136,7 +136,6 @@ fn foo() {
         let y = &mut x;       // type: &mut i32
         //x = 4;              // Error - x has been borrowed
         //println!("{}", x);  // Error - requires borrowing x
-        let z = *y + x;       // Ok - doesn't require borrowing
     }
     x = 4;                    // OK - y no longer exists
 }
