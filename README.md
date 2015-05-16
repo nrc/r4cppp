@@ -2,8 +2,8 @@
 
 A Rust tutorial for experienced C and C++ programmers.
 
-Jump to [contents](r4cppp#contents).
-Jump to [contributing](r4cppp#contributing).
+Jump to [contents](#contents).
+Jump to [contributing](#contributing).
 
 This tutorial is intended for programmers who already know how pointers and
 references work and are used to systems programming concepts such as integer
