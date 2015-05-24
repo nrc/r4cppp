@@ -86,8 +86,8 @@ fn foo() {
 Tuples are anonymous, heterogeneous sequences of data. As a type, they are
 declared as a sequence of types in parentheses. Since there is no name, they are
 identified by structure. For example, the type `(int, int)` is a pair of
-integers and `(i32, f32, S)` is a triple. Enum values are initialised in the
-same way as enum types are declared, but with values instead of types for the
+integers and `(i32, f32, S)` is a triple. Tuple values are initialised in the
+same way as tuple types are declared, but with values instead of types for the
 components, e.g., `(4, 5)`. An example:
 
 ```rust
