@@ -52,7 +52,7 @@ added advantage that it doesn't need to increment or decrement the ref count,
 and so will give better performance (although, that difference is probably
 marginal since Rc objects are limited to a single thread and so the ref count
 operations don't have to be atomic). As in C++, you can also take a reference to
-the Gc pointer.
+the Rc pointer.
 
 An Rc example:
 
