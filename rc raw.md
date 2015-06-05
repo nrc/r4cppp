@@ -87,35 +87,32 @@ with move semantics. So, for a mutable, ref-counted int you would use
 
 ## \*T - unsafe pointers
 
-TODO raw pointers must be const or mut now
-
-Finally Rust has unsafe pointers. These are denoted `*T` and are created using
-`&` (you might need to specify a type to get a `*T` rather than a `&T` since the
-`&` operator can create either a borrowed reference or an unsafe pointer). These
-are like C pointers, just a pointer to memory with no restrictions on how they
-are used (you can't do pointer arithmetic without casting, but you can do it
-that way if you must). Unsafe pointers are the only pointer type in Rust which
-can be null. There is no automatic dereferencing of unsafe pointers (so to call
-a method you have to write `(*x).foo()`) and no automatic referencing. The most
-important restriction is that they can't be dereferenced (and thus can't be
-used) outside of an unsafe block. In regular Rust code you can only pass them
-around.
-
-So, what is unsafe code? Rust has strong safety guarantees, and (rarely) they
-prevent you doing something you need to do. Since Rust aims to be a systems
-language, it has to be able to do anything that is possible and sometimes that
-means doing things the compiler can't verify is safe. To accomplish that, Rust
-has the concept of unsafe blocks, marked by the `unsafe` keyword. In unsafe code
-you can do unsafe things - dereference an unsafe pointer, index into an array
-without bounds checking, call code written in another language via the FFI, or
-cast variables. Obviously, you have to be much more careful writing unsafe code
-than writing regular Rust code. In fact, you should only very rarely write
-unsafe code. Mostly it is used in very small chunks in libraries, rather than in
-client code. In unsafe code you must do all the things you normally do in C++ to
-ensure safety. Furthermore, you must ensure that by the time the unsafe block
-finishes, you have re-established all of the invariants that the Rust compiler
-would usually enforce, otherwise you risk causing bugs in safe code too.
-
+Finally, Rust has two types of unsafe pointers. These are denoted either `*const
+T` for an (immutable) raw pointer  or `*mut T` for a mutable pointer. They are
+created using `&` or `&mut` (you might need to specify a type to get a `*T`
+rather than a `&T` since the `&` operator can create either a borrowed reference
+or an unsafe pointer). These are like C pointers, just a pointer to memory with
+no restrictions on how they are used (you can't do pointer arithmetic without
+casting, but you can do it that way if you must). Unsafe pointers are the only
+pointer type in Rust which can be null. There is no automatic dereferencing of
+unsafe pointers (so to call a method you have to write `(*x).foo()`) and no
+automatic referencing. The most important restriction is that they can't be
+dereferenced (and thus can't be used) outside of an unsafe block. In regular
+Rust code you can only pass them around. So, what is unsafe code? Rust has
+strong safety guarantees, and (rarely) they prevent you doing something you need
+to do. Since Rust aims to be a systems language, it has to be able to do
+anything that is possible and sometimes that means doing things the compiler
+can't verify is safe. To accomplish that, Rust has the concept of unsafe blocks,
+marked by the `unsafe` keyword. In unsafe code you can do unsafe things -
+dereference an unsafe pointer, index into an array without bounds checking, call
+code written in another language via the FFI, or cast variables. Obviously, you
+have to be much more careful writing unsafe code than writing regular Rust code.
+In fact, you should only very rarely write unsafe code. Mostly it is used in
+very small chunks in libraries, rather than in client code. In unsafe code you
+must do all the things you normally do in C++ to ensure safety. Furthermore, you
+must ensure that by the time the unsafe block finishes, you have re-established
+all of the invariants that the Rust compiler would usually enforce, otherwise
+you risk causing bugs in safe code too.
 An example of using an unsafe pointer:
 
 ```rust
@@ -128,7 +125,7 @@ fn foo() {
 fn add_5(p: *mut i32) -> i32 {
     unsafe {
         if !p.is_null() { // Note that *-pointers do not auto-deref, so this is
-                          // a method implemented on *int, not int.
+                          // a method implemented on *i32, not i32.
             *p + 5
         } else {
             -1            // Not a recommended error handling strategy.
