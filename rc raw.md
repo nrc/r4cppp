@@ -134,9 +134,6 @@ fn add_5(p: *mut i32) -> i32 {
 }
 ```
 
-As with borrowed references, unsafe pointers are immutable by default and can be
-made mutable using the `mut` keyword, for example `*mut int`.
-
 And that concludes our tour of Rust's pointers. Next time we'll take a break
 from pointers and look at Rust's data structures. We'll come back to borrowed
 references again in a later post though.
