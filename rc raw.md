@@ -59,8 +59,8 @@ An Rc example:
 ```rust
 use std::rc::Rc;
 
-fn bar(x: Rc<int>) { }
-fn baz(x: &int) { }
+fn bar(x: Rc<i32>) { }
+fn baz(x: &i32) { }
 
 fn foo() {
     let x = Rc::new(45);
@@ -120,12 +120,12 @@ An example of using an unsafe pointer:
 
 ```rust
 fn foo() {
-    let x = 5;
-    let xp: *int = &5;
-    println!("x+5={}", add_5(xp));
+    let mut x = 5;
+    let x_p: *mut i32 = &mut x;
+    println!("x+5={}", add_5(x_p));
 }
 
-fn add_5(p: *int) -> int {
+fn add_5(p: *mut i32) -> i32 {
     unsafe {
         if !p.is_null() { // Note that *-pointers do not auto-deref, so this is
                           // a method implemented on *int, not int.
