@@ -75,7 +75,7 @@ fn foo() {
     *xr = 4;               // Ok
     //let xr = &x;         // Error - there is already a mutable ref, so we
                            // can't make an immutable one
-    //let xr = &mut x;     // Error - can only have one immutable ref at a time
+    //let xr = &mut x;     // Error - can only have one mutable ref at a time
     bar(xr);               // Ok
     bar_mut(xr);           // Ok
 }
