@@ -9,7 +9,7 @@ growable 'array', Rust provides the `Vec` collection.
 
 ## Fixed length arrays
 
-The length of a fixed length array is known statically and features in it's
+The length of a fixed length array is known statically and features in its
 type. E.g., `[i32; 4]` is the type of an array of `i32`s with length four.
 
 Array literal and array access syntax is the same as C:
