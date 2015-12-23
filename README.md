@@ -1,4 +1,4 @@
-# Rust For C++ Programmers
+# Rust For Systems Programmers
 
 A Rust tutorial for experienced C and C++ programmers.
 
@@ -24,7 +24,7 @@ your objects and experience with generic programming, they shouldn't be too
 tough to learn.
 
 This tutorial started as a [series of blog posts](http://featherweightmusings.blogspot.co.nz/search/label/rust-for-c).
-Partly as an aid for me (@nick29581) learning Rust (there is no better way to
+Partly as an aid for me (@nrc) learning Rust (there is no better way to
 check that you have learnt something than to try and explain it to somebody
 else) and partly because I found the existing resources for learning Rust
 unsatisfactory - they spent too much time on the basics that I already knew and
@@ -35,30 +35,19 @@ audience who are a natural target for Rust, but are not particularly well
 catered for.
 
 
-## Installing Rust
+## Contents
 
-The easiest way to install Rust (on Linux and OS X, at least) is to run the rustup
-script. Simply enter one of the following into your shell:
-
-### Beta Version (Recommended)
-```
-curl -s https://static.rust-lang.org/rustup.sh | sudo sh
-```
-
-### To get the Nightly Version
-Some rust packages (crates) might not have been updataed to track rust-beta just yet.
-```
-curl -s https://static.rust-lang.org/rustup.sh | sudo sh -s -- --channel=nightly
-```
-
-You can download nightly binaries for Linux, OS X, and Windows from
-[rust-lang.org](http://www.rust-lang.org/install.html).
-
-You can download the source from [github.com/rust-lang/rust](https://github.com/rust-lang/rust)
-or by running `git clone https://github.com/rust-lang/rust.git`. The compiler is
-pretty straightforward to build - `./configure && make rustc` should do it. See
-[building-from-source](https://github.com/rust-lang/rust#building-from-source)
-for more detailed instructions.
+1. [Introduction - Hello world!](hello%20world.md)
+1. [Control flow](control%20flow.md)
+1. [Primitive types and operators](primitives.md)
+1. [Unique pointers](unique.md)
+1. [Borrowed pointers](borrowed.md)
+1. [Rc and raw pointers](rc%20raw.md)
+1. [Data types](data%20types.md)
+1. [Destructuring pt 1](destructuring.md)
+1. [Destructuring pt 2](destructuring 2.md)
+1. [Arrays and vecs](arrays.md)
+1. [Graphs and arena allocation](graphs/README.md)
 
 
 ## Other resources
@@ -79,37 +68,21 @@ for more detailed instructions.
   has changed *a lot* over the years and some of the answers might be very out of date.
 
 
-## Contents
-
-1. [Hello world!](hello%20world.md)
-1. [Intermission - why Rust?](why%20rust.md)
-1. [Control flow](control%20flow.md)
-1. [Primitive types and operators](primitives.md)
-1. [Unique pointers](unique.md)
-1. [Borrowed pointers](borrowed.md)
-1. [Rc and raw pointers](rc%20raw.md)
-1. [Data types](data%20types.md)
-1. [Destructuring pt 1](destructuring.md)
-1. [Destructuring pt 2](destructuring 2.md)
-1. [Arrays and vecs](arrays.md)
-1. [Graphs and arena allocation](graphs/README.md)
-
-
 ## Contributing
 
 Yes please!
 
 If you spot a typo or mistake, please submit a PR, don't be shy! Please feel
-free to file [an issue](https://github.com/nick29581/r4cppp/issues/new) for
+free to file [an issue](https://github.com/nrc/r4cppp/issues/new) for
 larger changes or for new chapters you'd like to see. I'd also be happy to see
 re-organisation of existing work or expanded examples, if you feel the tutorial
 could be improved in those ways.
 
 If you'd like to contribute a paragraph, section, or chapter please do! If you
-want ideas for things to cover, see the [list of issues](https://github.com/nick29581/r4cppp/issues),
-in particular those tagged [new material](https://github.com/nick29581/r4cppp/labels/new%20material).
+want ideas for things to cover, see the [list of issues](https://github.com/nrc/r4cppp/issues),
+in particular those tagged [new material](https://github.com/nrc/r4cppp/labels/new%20material).
 If you're not sure of something, please get in touch by pinging me here
-(@nick29581) or on irc (nrc, on #rust or #rust-internals).
+(@nrc) or on irc (nrc, on #rust or #rust-internals).
 
 
 ### Style
