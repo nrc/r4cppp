@@ -48,6 +48,7 @@ catered for.
 1. [Destructuring pt 2](destructuring 2.md)
 1. [Arrays and vecs](arrays.md)
 1. [Graphs and arena allocation](graphs/README.md)
+1. [Closures and first-class functions](closures.md)
 
 
 ## Other resources
