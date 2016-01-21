@@ -1,6 +1,5 @@
 # Closures and first-class functions
 
-
 Closures and first-class and higher order functions are a core part of Rust. In
 C and C++ there are function pointers (and those weird member/method pointer
 things in C++ that I never got the hang of). However, they are used relatively
@@ -14,12 +13,13 @@ dive in to the details.
 Lets say we have a function `foo`: `pub fn foo() -> u32 { 42 }`. Now let's
 imagine another function `bar` which takes a function as an argument (I'll leave
 `bar`'s signature for later): `fn bar(f: ...) { ... }`. We can pass `foo` to
-`bar` kind of like we would pass a functon pointer in C: `bar(foo)`. In the body
-of `bar` we can call `f` as if it were a function: `let x = f();`.
+`bar` kind of like we would pass a function pointer in C: `bar(foo)`. In the
+body of `bar` we can call `f` as if it were a function: `let x = f();`.
 
 We say that Rust has first-class functions because we can pass them around and
 use them like we can with other values. We say `bar` is a higher-order function
-because it takes a function as an argument.
+because it takes a function as an argument, i.e., it is a function that operates
+on functions.
 
 Closures in Rust are anonymous functions with a nice syntax. A closure `|x| x +
 2` takes an argument and returns it with `2` added. Note that we don't have to
@@ -512,9 +512,9 @@ different).
 
 ## References
 
-[RFC 114 - Closures](https://github.com/rust-lang/rfcs/blob/master/text/0114-closures.md)
-[Finding Closure in Rust blog post](http://huonw.github.io/blog/2015/05/finding-closure-in-rust/)
-[RFC 387 - Higher ranked trait bounds](https://github.com/rust-lang/rfcs/blob/master/text/0387-higher-ranked-trait-bounds.md)
-[Purging proc blog post](http://smallcultfollowing.com/babysteps/blog/2014/11/26/purging-proc/)
+* [RFC 114 - Closures](https://github.com/rust-lang/rfcs/blob/master/text/0114-closures.md)
+* [Finding Closure in Rust blog post](http://huonw.github.io/blog/2015/05/finding-closure-in-rust/)
+* [RFC 387 - Higher ranked trait bounds](https://github.com/rust-lang/rfcs/blob/master/text/0387-higher-ranked-trait-bounds.md)
+* [Purging proc blog post](http://smallcultfollowing.com/babysteps/blog/2014/11/26/purging-proc/)
 
 FIXME: relate to closures in C++ 11
