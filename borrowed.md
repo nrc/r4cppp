@@ -40,7 +40,7 @@ fn foo() {
     let y = &x;               // type: &i32
     let z = y;                // type: &i32
     let w = y;                // type: &i32
-    println!("These should all 5: {} {} {}", *w, *y, *z);
+    println!("These should all be 5: {} {} {}", *w, *y, *z);
 }
 ```
 
