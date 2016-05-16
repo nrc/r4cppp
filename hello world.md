@@ -53,7 +53,7 @@ apply to the stable channel.
 Beta is designed to mostly be used in users' CI to check that there code will
 continue to work as expected.
 
-So, you probably want the stable channel. If you're on Linux or OX X, the
+So, you probably want the stable channel. If you're on Linux or OS X, the
 easiest way to get it is to run
 
 ```
