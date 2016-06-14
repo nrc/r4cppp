@@ -14,7 +14,7 @@ way, destructuring combines pattern matching with assignment into local
 variables.
 
 Destructuring is done primarily through the let and match statements. The match
-statement is used when the structure being desctructured can have difference
+statement is used when the structure being destructured can have different
 variants (such as an enum). A let expression pulls the variables out into the
 current scope, whereas match introduces a new scope. To compare:
 
@@ -163,7 +163,7 @@ fn foo(b: Big) {
 
 Here, `x` and `field6` both have type `&int` and are references to the fields in `b`.
 
-One last trick when destructuring is that if you are detructuring a complex
+One last trick when destructuring is that if you are destructuring a complex
 object, you might want to name intermediate objects as well as individual
 fields. Going back to an earlier example, we had the pattern `&Var4(3, St{ f1:
 3, f2: x }, 45)`. In that pattern we named one field of the struct, but you
