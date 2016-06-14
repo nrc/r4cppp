@@ -285,7 +285,7 @@ fn main() {
 
 (The `'a` parameter on `S2` and `S3` is a lifetime parameter, we'll cover those soon).
 
-Sometimes whilst an object is logically mutable, it has parts which need to be
+Sometimes whilst an object is logically immutable, it has parts which need to be
 internally mutable. Think of various kinds of caching or a reference count
 (which would not give true logical immutability since the effect of changing the
 ref count can be observed via destructors). In C++, you would use the `mutable`
