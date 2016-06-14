@@ -14,7 +14,7 @@ way, destructuring combines pattern matching with assignment into local
 variables.
 
 Destructuring is done primarily through the let and match statements. The match
-statement is used when the structure being desctructured can have difference
+statement is used when the structure being destructured can have different
 variants (such as an enum). A let expression pulls the variables out into the
 current scope, whereas match introduces a new scope. To compare:
 
