@@ -60,6 +60,12 @@ easiest way to get it is to run
 curl -sSf https://static.rust-lang.org/rustup.sh | sh
 ```
 
+On Windows, a similarly easy way would be to run
+
+```
+choco install rust
+```
+
 For other ways to install, see [http://www.rust-lang.org/install.html](http://www.rust-lang.org/install.html).
 
 You can find the source at [github.com/rust-lang/rust](https://github.com/rust-lang/rust).
