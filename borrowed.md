@@ -206,7 +206,7 @@ Rust enforces and which makes it safer than C++.
 ## Explicit lifetimes
 
 After playing with borrowed pointers for a while, you'll probably come across
-borrowed pointers with an explicit lifetime. These have the syntax `&'a T` (cf
+borrowed pointers with an explicit lifetime. These have the syntax `&'a T` ([cf.](https://en.wikipedia.org/wiki/Cf.)
 `&T`). They're kind of a big topic since I need to cover lifetime-polymorphism
 at the same time so I'll leave it for another post (there are a few more less
 common pointer types to cover first though). For now, I just want to say that

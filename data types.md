@@ -54,7 +54,7 @@ fn foo(sos: SomeOtherStruct) {
 }
 ```
 
-Structs cannot be recursive, that is you can't have cycles of struct names
+Structs cannot be recursive; that is, you can't have cycles of struct names
 involving definitions and field types. This is because of the value semantics of
 structs. So for example, `struct R { r: Option<R> }` is illegal and will cause a
 compiler error (see below for more about Option). If you need such a structure
@@ -335,7 +335,7 @@ fn foo(x: Rc<RefCell<S>>) {
         // let s = x.borrow_mut(); // Error - we've already borrowed the contents of x
     }
 
-    let s = x.borrow_mut(); // O, the earlier borrows are out of scope
+    let s = x.borrow_mut(); // OK, the earlier borrows are out of scope
     s.f = 45;
     // println!("The field {}", x.borrow().field); // Error - can't mut and immut borrow
     println!("The field {}", s.f);

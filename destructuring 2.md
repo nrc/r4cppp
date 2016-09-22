@@ -13,7 +13,7 @@ have two choices: you can match `*x` and list all the variants (`Variant1 =>
 possible since there is less syntactic noise). `x` is a borrowed reference and
 there are strict rules for how a borrowed reference can be dereferenced, these
 interact with match expressions in surprising ways (at least surprising to me),
-especially when you a modifying an existing enum in a seemingly innocuous way
+especially when you are modifying an existing enum in a seemingly innocuous way
 and then the compiler explodes on a match somewhere.
 
 Before we get into the details of the match expression, lets recap Rust's rules
