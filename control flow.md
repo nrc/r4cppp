@@ -3,11 +3,11 @@
 ## If
 
 The `if` statement is pretty much the same in Rust as C++. One difference is
-that the braces are mandatory, but brackets around the expression being tested
+that the braces are mandatory, but parentheses around the expression being tested
 are not. Another is that `if` is an expression, so you can use it the same way
-as the ternary `?` operator in C++ (remember from last time that if the last
+as the ternary `?:` operator in C++ (remember from the previous section that if the last
 expression in a block is not terminated by a semi-colon, then it becomes the
-value of the block). There is no ternary `?` in Rust. So, the following two
+value of the block). There is no ternary `?:` in Rust. So, the following two
 functions do the same thing:
 
 ```rust
@@ -50,13 +50,13 @@ fn main() {
 }
 ```
 
-There is no do...while loop in Rust, but we do have the `loop` statement which
+There is no `do...while` loop in Rust, but there is the `loop` statement which
 just loops forever:
 
 ```rust
 fn main() {
     loop {
-        println!("Just looping");   
+        println!("Just looping");
     }
 }
 ```
