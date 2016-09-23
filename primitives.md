@@ -1,27 +1,27 @@
 # Primitive types and operators
 
-TODO int/uint -> isuze/usize
-
 Rust has pretty much the same arithmetic and logical operators as C++. `bool` is
 the same in both languages (as are the `true` and `false` literals). Rust has
 similar concepts of integers, unsigned integers, and floats. However the syntax
-is a bit different. Rust uses `int` to mean an integer and `uint` to mean an
-unsigned integer. These types are pointer sized. E.g., on a 32 bit system,
-`uint` means a 32 bit unsigned integer. Rust also has explicitly sized types
-which are `u` or `i` followed by 8, 16, 32, or 64. So, for example, `u8` is an 8
-bit unsigned integer and `i32` is a 32 bit signed integer. For floats, Rust has
-`f32` and `f64`.
+is a bit different. Rust uses `isize` to mean a pointer-sized integer and `usize` to mean an
+unsigned pointed-sized integer. As these types are pointer-sized, on a 32-bit system,
+`usize` means a 32-bit unsigned integer and on a 64-bit system it means a 64-bit integer.
+
+However, most of the time you don't want to be working with pointer-sized integers,
+so Rust also has plenty of types such as `i32`, `u8`, `f64`, etc. These take the form of
+either `i` for integers, `u` for unsized integers, or `f` for floats, followed by the
+type's size. The complete list of these types looks like: `i8`, `i16`, `i32`, `i64`,
+`u8`, `u16`, `u32`, `u64`, `f32`, `f64`.
 
 Numeric literals can take suffixes to indicate their type (using `i` and `u`
-instead of `int` and `uint`). If no suffix is given, Rust tries to infer the
-type. If it can't infer, it uses `int` or `f64` (if there is a decimal point).
-Examples:
+instead of `isize` and `usize`). If no suffix is given, Rust tries to infer the
+type. Examples:
 
 ```rust
 fn main() {
     let x: bool = true;
-    let x = 34;   // type int
-    let x = 34u;  // type uint
+    let x = 34is;   // x: isize
+    let x = 34us;   // x: usize
     let x: u8 = 34u8;
     let x = 34i64;
     let x = 34f32;
@@ -43,7 +43,7 @@ fn main() {
     let x = 0b1100;
     let x = 0o14;
     let x = 0xe;
-    let y = 0b_1100_0011_1011_0001;
+    let x = 0b_1100_0011_1011_0001;
 }
 ```
 
@@ -58,7 +58,7 @@ type. `as` cannot be used to convert between booleans and numeric types. E.g.,
 
 ```rust
 fn main() {
-    let x = 34u as int;     // cast unsigned int to int
+    let x = 34u32 as isize; // cast unsigned 32-bit int to pointer-sized int
     let x = 10 as f32;      // int to float
     let x = 10.45f64 as i8; // float to int (loses precision)
     let x = 4u8 as u64;     // gains precision
