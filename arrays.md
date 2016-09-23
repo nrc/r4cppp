@@ -121,7 +121,7 @@ So in the example above, the pointer `a` will be 128 bits wide (on a 64 bit
 system). The first 64 bits will store the address of the `1` in the sequence
 `[1, 2, 3, 4]`, and the second 64 bits will contain `4`. Usually, as a Rust
 programmer, these fat pointers can just be treated as regular pointers. But it
-is good to know about (in can affect the things you can do with casts, for
+is good to know about (it can affect the things you can do with casts, for
 example).
 
 
@@ -140,7 +140,7 @@ let b: &[i32] = &a;   // Slice of the whole array.
 let c = &a[0..4];     // Another slice of the whole array, also has type &[i32].
 let c = &a[1..3];     // The middle two elements, &[i32].
 let c = &a[1..];      // The last three elements.
-let c = &a[..3];      // The first three element.
+let c = &a[..3];      // The first three elements.
 let c = &a[..];       // The whole array, again.
 let c = &b[1..3];     // We can also slice a slice.
 ```
