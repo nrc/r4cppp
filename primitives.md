@@ -1,6 +1,6 @@
 # Primitive types and operators
 
-TODO int/uint -> isuze/usize
+TODO int/uint -> isize/usize
 
 Rust has pretty much the same arithmetic and logical operators as C++. `bool` is
 the same in both languages (as are the `true` and `false` literals). Rust has

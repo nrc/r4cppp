@@ -48,7 +48,7 @@ Like values, borrowed references are immutable by default. You can also use
 `&mut` to take a mutable reference, or to denote mutable reference types.
 Mutable borrowed references are unique (you can only take a single mutable
 reference to a value, and you can only have a mutable reference if there are no
-immutable references). You can use mutable reference where an immutable one is
+immutable references). You can use a mutable reference where an immutable one is
 wanted, but not vice versa. Putting all that together in an example:
 
 ```rust
