@@ -331,14 +331,14 @@ Struct S {
 fn foo(x: Rc<RefCell<S>>) {
     {
         let s = x.borrow();
-        println!("the field, twice {} {}", s.f, x.borrow().field);
+        println!("the field, twice {} {}", s.field, x.borrow().field);
         // let s = x.borrow_mut(); // Error - we've already borrowed the contents of x
     }
 
     let s = x.borrow_mut(); // OK, the earlier borrows are out of scope
-    s.f = 45;
+    s.field = 45;
     // println!("The field {}", x.borrow().field); // Error - can't mut and immut borrow
-    println!("The field {}", s.f);
+    println!("The field {}", s.field);
 }
 ```
 
