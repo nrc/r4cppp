@@ -142,7 +142,7 @@ can escape. We also don't bind the whole value (i.e., bind `*x` to a variable),
 so we can't move the whole object either.
 
 We can take a reference to any variant in the second match, but not in the
-derferenced version. So, in the second approach replacing the second arm with `a
+dereferenced version. So, in the second approach replacing the second arm with `a
 @ &Var2 => {}` is OK (`a` is a reference), but under the first approach we
 couldn't write `a @ Var2 => {}` since that would mean moving `*x` into `a`. We
 could write `ref a @ Var2 => {}` (in which `a` is also a reference), although
@@ -233,7 +233,7 @@ all of `x` into `a` and part of `x` into `y`. That is not allowed, an arm like
 that is illegal. Making one of `a` or `y` a reference (using `ref a`, etc.) is
 not an option either, then we'd have the problem described above where we move
 whilst holding a reference. We can make both `a` and `y` references and then
-we're OK - neither is moving, so `x` remains in tact and we have pointers to the
+we're OK - neither is moving, so `x` remains intact and we have pointers to the
 whole and a part of it.
 
 Similarly (and more common), if we have a variant with multiple pieces of nested
