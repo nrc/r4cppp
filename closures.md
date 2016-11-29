@@ -457,8 +457,8 @@ doesn't look much like a trait type. There is a little bit of magic here. Rust a
 this round bracket sugar only for function types. To desugar to a regular type
 (an 'angle bracket type'), the argument types are treated as a tuple type and
 passed as a type parameter and the return type as an associated type called
-`Output`. So, `Fn(i32) -> i32` is desugared to `Fn<(i32,), Ouput=i32>` and the
-`Fn` trait defintion looks like
+`Output`. So, `Fn(i32) -> i32` is desugared to `Fn<(i32,), Output=i32>` and the
+`Fn` trait definition looks like
 
 ```
 pub trait Fn<Args> : FnMut<Args> {

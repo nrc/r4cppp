@@ -55,7 +55,7 @@ fn foo() {
 
 As with primitive types in Rust, owning pointers and the data they point to are
 immutable by default. Unlike in C++, you can't have a mutable (unique) pointer to
-immutable data or vice-versa. Mutability of the data follows from the pointer.
+immutable data or vice versa. Mutability of the data follows from the pointer.
 E.g.,
 
 ```rust
