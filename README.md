@@ -29,7 +29,7 @@ check that you have learnt something than to try and explain it to somebody
 else) and partly because I found the existing resources for learning Rust
 unsatisfactory - they spent too much time on the basics that I already knew and
 used higher level intuitions to describe concepts that could better be explained
-to me using lower level intutitions. Since then, the documentation for Rust has
+to me using lower level intuitions. Since then, the documentation for Rust has
 got *much* better, but I still think that existing C++ programmers are an
 audience who are a natural target for Rust, but are not particularly well
 catered for.
@@ -64,7 +64,7 @@ catered for.
   questions about using and learning Rust.
 * [#rust irc channel](https://chat.mibbit.com/?server=irc.mozilla.org&channel=%23rust) - probably
   the best place to get quick answers to your Rust questions if you like irc.
-* [Stackoverflow Rust questions](https://stackoverflow.com/questions/tagged/rust) - answers
+* [StackOverflow Rust questions](https://stackoverflow.com/questions/tagged/rust) - answers
   to many beginner and advanced questions about Rust, but be careful though - Rust
   has changed *a lot* over the years and some of the answers might be very out of date.
 

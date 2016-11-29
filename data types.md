@@ -227,7 +227,7 @@ you usually would.
 There are also convenience methods on Option, so you could write the body of
 `is_root` as `node.is_none()` or `!node.is_some()`.
 
-## Inherited mutabilty and Cell/RefCell
+## Inherited mutability and Cell/RefCell
 
 Local variables in Rust are immutable by default and can be marked mutable using
 `mut`. We don't mark fields in structs or enums as mutable, their mutability is
