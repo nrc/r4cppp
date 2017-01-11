@@ -30,7 +30,7 @@ else) and partly because I found the existing resources for learning Rust
 unsatisfactory - they spent too much time on the basics that I already knew and
 used higher level intuitions to describe concepts that could better be explained
 to me using lower level intuitions. Since then, the documentation for Rust has
-got *much* better, but I still think that existing C++ programmers are an
+gotten *much* better, but I still think that existing C++ programmers are an
 audience who are a natural target for Rust, but are not particularly well
 catered for.
 
