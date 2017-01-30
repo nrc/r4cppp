@@ -45,10 +45,14 @@ semantics:
 }
 ```
 
-You can also choose to have copy semantics for structs defined by you. 
-Use `#[derive(Copy)]` to implement the `Copy` trait and the struct would 
-have Copy semantics. You may also need to derive the `Clone` trait needed
-by the `Copy` trait.
+You can also choose to have copy semantics for user-defined structs
+by implementing the `Copy` trait. One straightforward way to do that is 
+to add `#[derive(Copy)]` before the definition of the struct. Not all
+user-defined structs are allowed to implement `Copy` trait, in particular 
+those  with a destructor. Destructors probably need a post of their own,
+but for now, an object in Rust has a destructor if it implements the `Drop`
+trait. Just like C++, the destructor is executed just before an object is 
+destroyed. If an object has a destructor then it has move semantics.
 
 Now, it is important that a borrowed object is not moved, otherwise you would
 have a reference to the old object which is no longer valid. This is equivalent
