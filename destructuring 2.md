@@ -45,14 +45,10 @@ semantics:
 }
 ```
 
-Rust determines if an object has move or copy semantics by looking for
-destructors. Destructors probably need a post of their own, but for now, an
-object in Rust has a destructor if it implements the `Drop` trait. Just like
-C++, the destructor is executed just before an object is destroyed. If an object
-has a destructor then it has move semantics. If it does not, then all of its
-fields are examined and if any of those do then the whole object has move
-semantics. And so on down the object structure. If no destructors are found
-anywhere in an object, then it has copy semantics.
+You can also choose to have copy semantics for structs defined by you. 
+Use `#[derive(Copy)]` to implement the `Copy` trait and the struct would 
+have Copy semantics. You may also need to derive the `Clone` trait needed
+by the `Copy` trait.
 
 Now, it is important that a borrowed object is not moved, otherwise you would
 have a reference to the old object which is no longer valid. This is equivalent
