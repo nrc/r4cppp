@@ -4,8 +4,7 @@ Rust is a systems language and therefore must give you raw access to memory. It
 does this (as in C++) via pointers. Pointers are one area where Rust and C++ are
 very different, both in syntax and semantics. Rust enforces memory safety by
 type checking pointers. That is one of its major advantages over other
-languages. Although the type system is a bit complex, you get memory safety and
-bare-metal performance in return.
+languages, though that brings with it some added complexity to its type system.
 
 I had intended to cover all of Rust's pointers in one post, but I think the
 subject is too large. So this post will cover just one kind - unique pointers -
