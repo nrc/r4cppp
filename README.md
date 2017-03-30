@@ -45,7 +45,7 @@ catered for.
 1. [Rc and raw pointers](rc%20raw.md)
 1. [Data types](data%20types.md)
 1. [Destructuring pt 1](destructuring.md)
-1. [Destructuring pt 2](destructuring 2.md)
+1. [Destructuring pt 2](destructuring%202.md)
 1. [Arrays and vecs](arrays.md)
 1. [Graphs and arena allocation](graphs/README.md)
 1. [Closures and first-class functions](closures.md)
