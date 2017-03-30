@@ -63,6 +63,7 @@ fn foo() {
     let xr = &x;           // Ok (creates an immutable ref)
     bar(xr);
     //bar_mut(xr);         // Error - expects a mutable ref
+    let xr2 = &x;          // Create another immutable reference
 
     let mut x = 5;
     let xr = &x;           // Ok (creates an immutable ref)
