@@ -120,8 +120,8 @@ fn main() {
 ```
 
 `let` is used to introduce a variable, world is the variable name and it is a
-string (technically the type is `&'static str`, but more on that later. We don't
-need to specify the type, it will be inferred for us.
+string (technically the type is `&'static str`, but more on that later). We
+don't need to specify the type, it will be inferred for us.
 
 Using `{}` in the `println!` statement is like using `%s` in printf. In fact, it
 is a bit more general than that because Rust will try to convert the variable to
