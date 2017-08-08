@@ -149,7 +149,7 @@ fn print_some(x: i32) {
 ```
 
 Another semantic difference is that there is no fall through from one arm to the
-next.
+next so it works like `if...else if...else`.
 
 We'll see in later posts that match is extremely powerful. For now I want to
 introduce just a couple more features - the 'or' operator for values and `if`
