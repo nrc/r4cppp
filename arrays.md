@@ -21,8 +21,9 @@ println!("The second element is {}", a[1]);
 
 You'll notice that array indexing is zero-based, just like C.
 
-However, unlike C/C++, array indexing is bounds checked. In fact all access to
-arrays is bounds checked, which is another way Rust is a safer language.
+However, unlike C/C++<sup>[1](#1)</sup>, array indexing is bounds checked. In
+fact all access to arrays is bounds checked, which is another way Rust is a
+safer language.
 
 If you try to do `a[4]`, then you will get a runtime panic. Unfortunately, the
 Rust compiler is not clever enough to give you a compile time error, even when
@@ -67,7 +68,7 @@ make a pointer to the array, this will give you a pointer to the first element.
 
 A final point of difference between arrays in Rust and C++ is that Rust arrays
 can implement traits, and thus have methods. To find the length of an array, for
-example, you use `a.len()`.
+example, you use `a.len()`<sup>[2](#2)</sup>.
 
 
 ## Slices
@@ -266,3 +267,13 @@ elements, each with the value 42.
 The initial value is not limited to integers, it can be any expression. For
 array initialisers, the length must be an integer constant expression. For
 `vec!`, it can be any expression with type `usize`.
+
+
+##### 1
+
+In C++11 there is `std::array<T, N>` that provides boundary checking when
+`at()` method is used exactly as `std::vector<T>` does.
+
+##### 2
+
+`std::array<T, N>` has the `size()` method to get the array length.
