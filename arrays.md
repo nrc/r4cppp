@@ -272,7 +272,7 @@ array initialisers, the length must be an integer constant expression. For
 ##### 1
 
 In C++11 there is `std::array<T, N>` that provides boundary checking when
-`at()` method is used exactly as `std::vector<T>` does.
+`at()` method is used.
 
 ##### 2
 
