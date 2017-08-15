@@ -68,7 +68,7 @@ make a pointer to the array, this will give you a pointer to the first element.
 
 A final point of difference between arrays in Rust and C++ is that Rust arrays
 can implement traits, and thus have methods. To find the length of an array, for
-example, you use `a.len()`<sup>[2](#2)</sup>.
+example, you use `a.len()`.
 
 
 ## Slices
@@ -273,7 +273,3 @@ array initialisers, the length must be an integer constant expression. For
 
 In C++11 there is `std::array<T, N>` that provides boundary checking when
 `at()` method is used.
-
-##### 2
-
-`std::array<T, N>` has the `size()` method to get the array length.
