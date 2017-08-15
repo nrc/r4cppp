@@ -172,7 +172,7 @@ For that, Rust has borrowed pointers. I'll cover those in the next post.
 ##### 1
 
 In C++11 the `std::unique_ptr<T>` was introduced that may be in some aspects
-associatedto Rust `Box<T>` but there are also significant differences.
+associated to Rust `Box<T>` but there are also significant differences.
 
 `std::unique_ptr<T>` like `Box<T>` automatically releases the memory being
 pointed once it goes out of the scope and has only move semantics.
