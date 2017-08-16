@@ -1,27 +1,25 @@
 # Primitive types and operators
 
-TODO int/uint -> isize/usize
-
 Rust has pretty much the same arithmetic and logical operators as C++. `bool` is
 the same in both languages (as are the `true` and `false` literals). Rust has
 similar concepts of integers, unsigned integers, and floats. However the syntax
-is a bit different. Rust uses `int` to mean an integer and `uint` to mean an
+is a bit different. Rust uses `isize` to mean an integer and `usize` to mean an
 unsigned integer. These types are pointer sized. E.g., on a 32 bit system,
-`uint` means a 32 bit unsigned integer. Rust also has explicitly sized types
+`usize` means a 32 bit unsigned integer. Rust also has explicitly sized types
 which are `u` or `i` followed by 8, 16, 32, or 64. So, for example, `u8` is an 8
 bit unsigned integer and `i32` is a 32 bit signed integer. For floats, Rust has
 `f32` and `f64`.
 
 Numeric literals can take suffixes to indicate their type (using `i` and `u`
-instead of `int` and `uint`). If no suffix is given, Rust tries to infer the
-type. If it can't infer, it uses `int` or `f64` (if there is a decimal point).
+instead of `isize` and `usize`). If no suffix is given, Rust tries to infer the
+type. If it can't infer, it uses `isize` or `f64` (if there is a decimal point).
 Examples:
 
 ```rust
 fn main() {
     let x: bool = true;
-    let x = 34;   // type int
-    let x = 34u;  // type uint
+    let x = 34;   // type isize
+    let x = 34u;  // type usize
     let x: u8 = 34u8;
     let x = 34i64;
     let x = 34f32;
@@ -58,9 +56,9 @@ type. `as` cannot be used to convert between booleans and numeric types. E.g.,
 
 ```rust
 fn main() {
-    let x = 34u as int;     // cast unsigned int to int
-    let x = 10 as f32;      // int to float
-    let x = 10.45f64 as i8; // float to int (loses precision)
+    let x = 34u as isize;   // cast usize to isize
+    let x = 10 as f32;      // isize to float
+    let x = 10.45f64 as i8; // float to i8 (loses precision)
     let x = 4u8 as u64;     // gains precision
     let x = 400u16 as u8;   // 144, loses precision (and thus changes the value)
     println!("`400u16 as u8` gives {}", x);

@@ -125,10 +125,9 @@ don't need to specify the type, it will be inferred for us.
 
 Using `{}` in the `println!` statement is like using `%s` in printf. In fact, it
 is a bit more general than that because Rust will try to convert the variable to
-a string if it is not one already<sup>[1](#1)</sup>. You can easily play around
-with this sort of thing - try multiple strings and using numbers (integer and
-float literals will
-work).
+a string if it is not one already<sup>[1](#1)</sup> (like `operator<<()` in C++).
+You can easily play around with this sort of thing - try multiple strings and
+using numbers (integer and float literals will work).
 
 If you like, you can explicitly give the type of `world`:
 

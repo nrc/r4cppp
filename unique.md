@@ -37,12 +37,13 @@ fn foo() {
 ```
 
 Here `x` is a pointer to a location on the heap which contains the value `75`.
-`x` has type `Box<int>`; we could have written `let x: Box<int> = Box::new(75);`. This
-is similar to writing `int* x = new int(75);` in C++. Unlike in C++, Rust will
-tidy up the memory for us, so there is no need to call `free` or `delete`.
-Unique pointers behave similarly to values - they are deleted when the variable
-goes out of scope. In our example, at the end of the function `foo`, `x` can no
-longer be accessed and the memory pointed at by `x` can be reused.
+`x` has type `Box<isize>`; we could have written `let x: Box<isize> =
+Box::new(75);`. This is similar to writing `int* x = new int(75);` in C++.
+Unlike in C++, Rust will tidy up the memory for us, so there is no need to call
+`free` or `delete`<sup>[1](#1)</sup>. Unique pointers behave similarly to
+values - they are deleted when the variable goes out of scope. In our example,
+at the end of the function `foo`, `x` can no longer be accessed and the memory
+pointed at by `x` can be reused.
 
 Owning pointers are dereferenced using the `*` as in C++. E.g.,
 
@@ -109,7 +110,7 @@ Likewise, if an owning pointer is passed to another function or stored in a
 field, it can no longer be accessed:
 
 ```rust
-fn bar(y: Box<int>) {
+fn bar(y: Box<isize>) {
 }
 
 fn foo() {
@@ -147,7 +148,8 @@ fn bar(x: Box<Foo>, y: Box<Box<Box<Box<Foo>>>>) {
 
 Assuming that the type `Foo` has a method `foo()`, both these expressions are OK.
 
-Calling Box::new() with an existing value does not take a reference to that value, it copies that value. So,
+Calling `Box::new()` with an existing value does not take a reference to that
+value, it copies that value. So,
 
 ```rust
 fn foo() {
@@ -165,3 +167,26 @@ this in more detail later.
 
 Sometimes when programming, however, we need more than one reference to a value.
 For that, Rust has borrowed pointers. I'll cover those in the next post.
+
+
+##### 1
+
+In C++11 the `std::unique_ptr<T>` was introduced that may be in some aspects
+associated to Rust `Box<T>` but there are also significant differences.
+
+`std::unique_ptr<T>` like `Box<T>` automatically releases the memory being
+pointed once it goes out of the scope and has only move semantics.
+
+In some way the `let x = Box::new(75)` may be interpreted as `const auto x =
+std::unique_ptr<const int>{new int{75}};` in C++11 and `const auto x =
+std::make_unique<const int>{75};` since C++14.
+
+But there are still important differences between `Box<T>` and
+`std::unique_ptr<T>` that should be taken into account:
+
+1. If `std::unique_ptr<T>` is created by passing the pointer to constructor
+   it there is a possibility to have several unique pointers to the same memory
+   that is not possible with `Box<T>`
+2. Once `std::unique_ptr<T>` is moved to another variable or to function
+   dereference of this pointer causes undefined behavior that is also
+   impossible in Rust

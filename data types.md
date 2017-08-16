@@ -152,7 +152,7 @@ However, Rust enums are much more powerful than that. Each variant can contain
 data. Like tuples, these are defined by a list of types. In this case they are
 more like unions than enums in C++. Rust enums are tagged unions rather untagged
 (as in C++), that means you can't mistake one variant of an enum for another at
-runtime. An example:
+runtime<sup>[1](#1)</sup>. An example:
 
 ```rust
 enum Expr {
@@ -196,12 +196,12 @@ One particularly common enum in Rust is `Option`. This has two variants - `Some`
 and `None`. `None` has no data and `Some` has a single field with type `T`
 (`Option` is a generic enum, which we will cover later, but hopefully the
 general idea is clear from C++). Options are used to indicate a value might be
-there or might not. Any place you use a null pointer in C++ to indicate a value
-which is in some way undefined, uninitialised, or false, you should probably use
-an Option in Rust. Using Option is safer because you must always check it before
-use; there is no way to do the equivalent of dereferencing a null pointer. They
-are also more general, you can use them with values as well as pointers. An
-example:
+there or might not. Any place you use a null pointer in C++<sup>[2](#2)</sup>.
+to indicate a value which is in some way undefined, uninitialised, or false,
+you should probably use an Option in Rust. Using Option is safer because you
+must always check it before use; there is no way to do the equivalent of
+dereferencing a null pointer. They are also more general, you can use them with
+values as well as pointers. An example:
 
 ```rust
 use std::rc::Rc;
@@ -346,3 +346,12 @@ If you're using Cell/RefCell, you should try to put them on the smallest object
 you can. That is, prefer to put them on a few fields of a struct, rather than
 the whole struct. Think of them like single threaded locks, finer grained
 locking is better since you are more likely to avoid colliding on a lock.
+
+
+##### 1
+
+In C++17 there is `std::variant<T>` type that is closer to Rust enums than unions.
+
+##### 2
+
+Since C++17 `std::optional<T>` is the best alternative of Option in Rust.

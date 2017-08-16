@@ -30,7 +30,7 @@ the destination must be annotated with `&`. For pass-by-value in Rust, there are
 two further choices - copy or move. A copy is the same as C++'s semantics
 (except that there are no copy constructors in Rust). A move copies the value
 but destroys the old value - Rust's type system ensures you can no longer access
-the old value. As examples, `int` has copy semantics and `Box<int>` has move
+the old value. As examples, `i32` has copy semantics and `Box<i32>` has move
 semantics:
 
 ```rust
@@ -112,7 +112,7 @@ passing rather than by-move).
 ```rust
 enum Enum2 {
     // Box has a destructor so Enum2 has move semantics.
-    Var1(Box<int>),
+    Var1(Box<i32>),
     Var2,
     Var3
 }
@@ -173,9 +173,9 @@ OK, because now we are not dereferencing anywhere and thus not moving any part
 of `x`. Instead we are creating a pointer which points into the interior of `x`.
 
 Alternatively, we could destructure the Box (this match is going three levels
-deep): `&Var1(box y) => {}`. This is OK because `int` has copy semantics and `y`
-is a copy of the `int` inside the `Box` inside `Var1` (which is 'inside' a
-borrowed reference). Since `int` has copy semantics, we don't need to move any
+deep): `&Var1(box y) => {}`. This is OK because `i32` has copy semantics and `y`
+is a copy of the `i32` inside the `Box` inside `Var1` (which is 'inside' a
+borrowed reference). Since `i32` has copy semantics, we don't need to move any
 part of `x`. We could also create a reference to the int rather than copy it:
 `&Var1(box ref y) => {}`. Again, this is OK, because we don't do any
 dereferencing and thus don't need to move any part of `x`. If the contents of

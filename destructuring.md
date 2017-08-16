@@ -4,14 +4,14 @@ Last time we looked at Rust's data types. Once you have some data inside a struc
 will want to get that data out. For structs, Rust has field access, just like
 C++. For tuples, tuple structs, and enums you must use destructuring (there are
 various convenience functions in the library, but they use destructuring
-internally). Destructuring of data structures doesn't happen in C++, but it
-might be familiar from languages such as Python or various functional languages.
-The idea is that just as you can initialize a data structure by filling out its
-fields with data from a bunch of local variables, you can fill out a bunch of
-local variables with data from a data structure. From this simple beginning,
-destructuring has become one of Rust's most powerful features. To put it another
-way, destructuring combines pattern matching with assignment into local
-variables.
+internally). Destructuring of data structures exists in C++ only since C++17, so
+it most likely familiar from languages such as Python or various functional
+languages.  The idea is that just as you can initialize a data structure by
+filling out its fields with data from a bunch of local variables, you can fill
+out a bunch of local variables with data from a data structure.  From this
+simple beginning, destructuring has become one of Rust's most powerful
+features. To put it another way, destructuring combines pattern matching with
+assignment into local variables.
 
 Destructuring is done primarily through the let and match statements. The match
 statement is used when the structure being destructured can have different
