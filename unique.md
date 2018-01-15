@@ -190,3 +190,7 @@ But there are still important differences between `Box<T>` and
 2. Once `std::unique_ptr<T>` is moved to another variable or to function
    dereference of this pointer causes undefined behavior that is also
    impossible in Rust
+3. Mutability or immutability does not go "through" `std::unique_ptr<T>` 
+   -- dereferencing a `const std::unique_ptr<T>` still yields a mutable 
+   (non-`const`) reference to the underlying data. In Rust, an immutable
+   `Box<T>` does not allow mutation of the data it points to
