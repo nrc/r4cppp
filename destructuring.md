@@ -67,7 +67,7 @@ fn foo(x: &En) {
         &Var4(3, St { f1: 3, f2: x }, 45) => {
             println!("destructuring an embedded struct, found {} in f2", x)
         }
-        &Var4(_, x, _) => {
+        &Var4(_, ref x, _) => {
             println!("Some other Var4 with {} in f1 and {} in f2", x.f1, x.f2)
         }
         _ => println!("other (Var2)")
