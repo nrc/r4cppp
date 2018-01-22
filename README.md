@@ -58,7 +58,7 @@ catered for.
   on stuff here or for stuff not covered.
 * [Rust API documentation](http://doc.rust-lang.org/std/index.html) - detailed
   documentation for the Rust libraries.
-* [The Rust reference manual](http://doc.rust-lang.org/reference.html) - a little
+* [The Rust reference manual](https://doc.rust-lang.org/reference/) - a little
   out of date in places, but thorough; good for looking up details.
 * [Discuss forum](http://users.rust-lang.org/) - general forum for discussion or
   questions about using and learning Rust.
