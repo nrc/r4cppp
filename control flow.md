@@ -87,13 +87,42 @@ for loop over an array), you could do
 
 ```rust
 fn print_all(all: Vec<i32>) {
-    for i in ..all.len() {
-        println!("{}: {}", i, all.get(i));
+    for i in 0..all.len() {
+        println!("{}: {}", i, all[i]);
     }
 }
 ```
 
 Hopefully, it is obvious what the `len` function does. TODO range notation
+
+A more Rust-like equivalent of the preceding example would be to use an
+enumerating iterator:
+
+```rust
+fn print_all(all: Vec<i32>) {
+    for (i, a) in all.iter().enumerate() {
+        println!("{}: {}", i, a);
+    }
+}
+```
+
+Where `enumerate()` chains from the iterator `iter()` and yields the current
+count and the element during iteration.
+
+*The following example incorporates more advanced topics covered in the section
+on [Borrowed Pointers](borrowed.md).* Let's say you have a vector of integers
+and want to call the the function, passing the vector by reference and have the
+vector modified in place. Here the `for` loop uses a mutable iterator which
+gives mutable refererences - the `*` dereferencing should be familiar to C++
+programmers:
+
+```rust
+fn double_all(all: &mut Vec<i32>) {
+    for a in all.iter_mut() {
+        *a += *a;
+    }
+}
+```
 
 
 ## Switch/Match
