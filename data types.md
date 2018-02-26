@@ -225,7 +225,7 @@ you usually would.
 
 
 There are also convenience methods on Option, so you could write the body of
-`is_root` as `node.is_none()` or `!node.is_some()`.
+`is_root` as `node.parent.is_none()` or `!node.parent.is_some()`.
 
 ## Inherited mutability and Cell/RefCell
 
