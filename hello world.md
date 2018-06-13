@@ -50,7 +50,7 @@ cutting edge features and ensure that their libraries will work with future Rust
 Stable is the right choice for most users. Rust's stability guarantees only
 apply to the stable channel.
 
-Beta is designed to mostly be used in users' CI to check that there code will
+Beta is designed to mostly be used in users' CI to check that their code will
 continue to work as expected.
 
 So, you probably want the stable channel. If you're on Linux or OS X, the
