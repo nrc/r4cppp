@@ -111,7 +111,7 @@ count and the element during iteration.
 
 *The following example incorporates more advanced topics covered in the section
 on [Borrowed Pointers](borrowed.md).* Let's say you have a vector of integers
-and want to call the the function, passing the vector by reference and have the
+and want to call the function, passing the vector by reference and have the
 vector modified in place. Here the `for` loop uses a mutable iterator which
 gives mutable refererences - the `*` dereferencing should be familiar to C++
 programmers:
