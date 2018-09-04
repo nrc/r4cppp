@@ -184,8 +184,8 @@ std::make_unique<const int>{75};` since C++14.
 But there are still important differences between `Box<T>` and
 `std::unique_ptr<T>` that should be taken into account:
 
-1. If `std::unique_ptr<T>` is created by passing the pointer to constructor
-   it there is a possibility to have several unique pointers to the same memory
+1. If `std::unique_ptr<T>` is created by passing the pointer to its constructor
+   there is a possibility to have several unique pointers to the same memory
    that is not possible with `Box<T>`
 2. Once `std::unique_ptr<T>` is moved to another variable or to function
    dereference of this pointer causes undefined behavior that is also
