@@ -335,7 +335,7 @@ fn foo(x: Rc<RefCell<S>>) {
         // let s = x.borrow_mut(); // Error - we've already borrowed the contents of x
     }
 
-    let s = x.borrow_mut(); // OK, the earlier borrows are out of scope
+    let mut s = x.borrow_mut(); // OK, the earlier borrows are out of scope
     s.field = 45;
     // println!("The field {}", x.borrow().field); // Error - can't mut and immut borrow
     println!("The field {}", s.field);
