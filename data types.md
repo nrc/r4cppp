@@ -340,6 +340,14 @@ fn foo(x: Rc<RefCell<S>>) {
     // println!("The field {}", x.borrow().field); // Error - can't mut and immut borrow
     println!("The field {}", s.field);
 }
+
+fn main() {
+    let s = S{field:12};
+    let x: Rc<RefCell<S>> = Rc::new(RefCell::new(s));
+    foo(x.clone());
+
+    println!("The field {}", x.borrow().field);
+}
 ```
 
 If you're using Cell/RefCell, you should try to put them on the smallest object
