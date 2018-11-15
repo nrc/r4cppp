@@ -324,7 +324,7 @@ Here's an example using a ref-counted pointer to a RefCell (a common use-case):
 use std::rc::Rc;
 use std::cell::RefCell;
 
-Struct S {
+struct S {
     field: i32
 }
 
