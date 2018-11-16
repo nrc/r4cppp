@@ -15,7 +15,7 @@ list of named fields. The syntax is best seen with an example:
 
 ```rust
 struct S {
-    field1: int,
+    field1: i32,
     field2: SomeOtherStruct
 }
 ```
@@ -85,7 +85,7 @@ fn foo() {
 
 Tuples are anonymous, heterogeneous sequences of data. As a type, they are
 declared as a sequence of types in parentheses. Since there is no name, they are
-identified by structure. For example, the type `(int, int)` is a pair of
+identified by structure. For example, the type `(i32, i32)` is a pair of
 integers and `(i32, f32, S)` is a triple. Tuple values are initialised in the
 same way as tuple types are declared, but with values instead of types for the
 components, e.g., `(4, 5)`. An example:
@@ -100,7 +100,7 @@ fn foo(x: SomeOtherStruct) -> (i32, f32, S) {
 Tuples can be used by destructuring using a `let` expression, e.g.,
 
 ```rust
-fn bar(x: (int, int)) {
+fn bar(x: (i32, i32)) {
     let (a, b) = x;
     println!("x was ({}, {})", a, b);
 }
@@ -118,7 +118,7 @@ fields must be accessed by destructuring (like a tuple), rather than by name.
 Tuple structs are not very common.
 
 ```rust
-struct IntPoint (int, int);
+struct IntPoint (i32, i32);
 
 fn foo(x: IntPoint) {
     let IntPoint(a, b) = x;  // Note that we need the name of the tuple
@@ -156,9 +156,9 @@ runtime<sup>[1](#1)</sup>. An example:
 
 ```rust
 enum Expr {
-    Add(int, int),
+    Add(i32, i32),
     Or(bool, bool),
-    Lit(int)
+    Lit(i32)
 }
 
 fn foo() {
@@ -186,7 +186,7 @@ fn bar(e: Expr) {
 Each arm of the match expression matches a variant of `Expr`. All variants must
 be covered. The last case (`_`) covers all remaining variants, although in the
 example there is only `Lit`. Any data in a variant can be bound to a variable.
-In the `Add` arm we are binding the two ints in an `Add` to `x` and `y`. If we
+In the `Add` arm we are binding the two i32s in an `Add` to `x` and `y`. If we
 don't care about the data, we can use `..` to match any data, as we do for `Or`.
 
 
@@ -208,7 +208,7 @@ use std::rc::Rc;
 
 struct Node {
     parent: Option<Rc<Node>>,
-    value: int
+    value: i32
 }
 
 fn is_root(node: Node) -> bool {
@@ -236,11 +236,11 @@ depending on whether the object itself is mutable or immutable. Example:
 
 ```rust
 struct S1 {
-    field1: int,
+    field1: i32,
     field2: S2
 }
 struct S2 {
-    field: int
+    field: i32
 }
 
 fn main() {
@@ -262,7 +262,7 @@ a reference field to be mutable, you have to use `&mut` on the field type:
 
 ```rust
 struct S1 {
-    f: int
+    f: i32
 }
 struct S2<'a> {
     f: &'a mut S1   // mutable reference field
@@ -324,8 +324,8 @@ Here's an example using a ref-counted pointer to a RefCell (a common use-case):
 use std::rc::Rc;
 use std::cell::RefCell;
 
-Struct S {
-    field: int
+struct S {
+    field: i32
 }
 
 fn foo(x: Rc<RefCell<S>>) {
@@ -335,10 +335,18 @@ fn foo(x: Rc<RefCell<S>>) {
         // let s = x.borrow_mut(); // Error - we've already borrowed the contents of x
     }
 
-    let s = x.borrow_mut(); // OK, the earlier borrows are out of scope
+    let mut s = x.borrow_mut(); // OK, the earlier borrows are out of scope
     s.field = 45;
     // println!("The field {}", x.borrow().field); // Error - can't mut and immut borrow
     println!("The field {}", s.field);
+}
+
+fn main() {
+    let s = S{field:12};
+    let x: Rc<RefCell<S>> = Rc::new(RefCell::new(s));
+    foo(x.clone());
+
+    println!("The field {}", x.borrow().field);
 }
 ```
 
