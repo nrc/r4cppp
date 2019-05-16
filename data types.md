@@ -150,9 +150,8 @@ fn foo() {
 
 However, Rust enums are much more powerful than that. Each variant can contain
 data. Like tuples, these are defined by a list of types. In this case they are
-more like unions than enums in C++. Rust enums are tagged unions rather untagged
-(as in C++), that means you can't mistake one variant of an enum for another at
-runtime<sup>[1](#1)</sup>. An example:
+more like unions than enums in C++. Rust enums are tagged unions rather than untagged unions (as in C++). 
+That means you can't mistake one variant of an enum for another at runtime<sup>[1](#1)</sup>. An example:
 
 ```rust
 enum Expr {
