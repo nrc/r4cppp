@@ -99,8 +99,8 @@ fn foo() {
     let mut xr = &mut x;
     xr = &mut y;          // Ok
 
-    let mut x = 5;
-    let mut y = 6;
+    let x = 5;
+    let y = 6;
     let mut xr = &x;
     xr = &y;              // Ok - xr is mut, even though the referenced data is not
 }
