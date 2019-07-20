@@ -198,8 +198,8 @@ fn foo() {
 }                     // x and xr are released here
 ```
 
-In the above example, x and xr don't have the same lifetime because xr starts
-later than x, but it's the end of lifetimes which is more interesting, since you
+In the above example, xr and y don't have the same lifetime because y starts
+later than xr, but it's the end of lifetimes which is more interesting, since you
 can't reference a variable before it exists in any case - something else which
 Rust enforces and which makes it safer than C++.
 
