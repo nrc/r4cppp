@@ -48,7 +48,7 @@ semantics:
 You can also choose to have copy semantics for user-defined types
 by implementing the `Copy` trait. One straightforward way to do that is 
 to add `#[derive(Copy)]` before the definition of the `struct`. Not all
-user-defined types are allowed to implement `Copy` trait. All field of 
+user-defined types are allowed to implement the `Copy` trait. All fields of 
 a type must implement `Copy` and the type must not have a destructor. 
 Destructors probably need a post of their own, but for now, an object 
 in Rust has a destructor if it implements the `Drop`trait. 
@@ -101,8 +101,8 @@ reference to each variant. This match goes two levels deep - it matches the type
 (always a reference) and looks inside the type to match the referred type (which
 is `Enum1`).
 
-Either way, we must ensure that we (that is, the compiler) must ensure we
-respect Rust's invariants around moves and references - we must not move any
+Either way, we must ensure that we (that is, the compiler) respect 
+Rust's invariants around moves and references - we must not move any
 part of an object if it is referenced. If the value being matched has copy
 semantics, that is trivial. If it has move semantics then we must make sure that
 moves don't happen in any match arm. This is accomplished either by ignoring
@@ -168,7 +168,7 @@ match x {
 ```
 
 because in both cases it means moving part of `x` into `y`. We can use the 'ref'
-keyword to get a reference to the data in `Var1`: `&Var1(ref y) => {}`.That is
+keyword to get a reference to the data in `Var1`: `&Var1(ref y) => {}`. That is
 OK, because now we are not dereferencing anywhere and thus not moving any part
 of `x`. Instead we are creating a pointer which points into the interior of `x`.
 
