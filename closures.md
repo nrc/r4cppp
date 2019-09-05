@@ -354,7 +354,7 @@ We don't normally use the variants in this way, we treat them as data types
 rather than functions. But sometimes it is useful, for example if we have a list
 of `i32`s we can create a list of `Foo`s with
 
-```
+```rust
 list_of_i32.iter().map(Foo::Baz).collect()
 ```
 
@@ -417,7 +417,7 @@ closure.
 
 For example, consider
 
-```
+```rust
 fn main() {
     let x = Foo { ... };
     let f = |y| x.get_number() + y;
@@ -427,7 +427,7 @@ fn main() {
 
 the compiler treats this as
 
-```
+```rust
 struct Closure14<'env> {
     x: &'env Foo,
 }
@@ -460,7 +460,7 @@ passed as a type parameter and the return type as an associated type called
 `Output`. So, `Fn(i32) -> i32` is desugared to `Fn<(i32,), Output=i32>` and the
 `Fn` trait definition looks like
 
-```
+```rust
 pub trait Fn<Args> : FnMut<Args> {
     fn call(&self, args: Args) -> Self::Output;
 }
@@ -468,7 +468,7 @@ pub trait Fn<Args> : FnMut<Args> {
 
 The implementation for `Closure14` above would therefore look more like
 
-```
+```rust
 impl<'env> FnOnce<(i32,)> for Closure14<'env> {
     type Output = i32;
     fn call_once(self, args: (i32,)) -> i32 {
