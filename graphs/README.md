@@ -180,7 +180,7 @@ objects), arena allocation is very efficient. Usually, all the objects are
 allocated from a contiguous chunk of memory, that improves cache coherency when
 you are traversing the graph.
 
-In Rust, arena allocation is supported by the [libarena](https://doc.rust-lang.org/arena/index.html)
+In Rust, arena allocation is supported by the [libarena](https://doc.rust-lang.org/1.1.0/arena/index.html)
 crate and is used throughout the compiler. There are two kinds of arenas - typed
 and untyped. The former is more efficient and easier to use, but can only
 allocate objects of a single type. The latter is more flexible and can allocate
