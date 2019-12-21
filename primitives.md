@@ -68,13 +68,17 @@ fn main() {
 }
 ```
 
-Rust has the following numeric operators: `+`, `-`, `*`, `/`, `%`; bitwise
-operators: `|`, `&`, `^`, `<<`, `>>`; comparison operators: `==`, `!=`, `>`,
-`<`, `>=`, `<=`; short-circuit logical operators: `||`, `&&`. All of these
-behave as in C++, however, Rust is a bit stricter about the types the operators
-can be applied to - the bitwise operators can only be applied to integers and
-the logical operators can only be applied to booleans. Rust has the `-` unary
-operator which negates a number. The `!` operator negates a boolean and inverts
-every bit on an integer type (equivalent to `~` in C++ in the latter case). Rust
-has compound assignment operators as in C++, e.g., `+=`, but does not have
-increment or decrement operators (e.g., `++`).
+Rust has the following operators:
+
+Numeric: `+`, `-`, `*`, `/`, `%`\
+Bitwise: `|`, `&`, `^`, `<<`, `>>`\
+Comparison: `==`, `!=`, `>`, `<`, `>=`, `<=`\
+Short-circuit logical: `||`, `&&`
+
+All of these behave as in C++, however, Rust is a bit stricter about the types
+the operators can be applied to - the bitwise operators can only be applied to
+integers and the logical operators can only be applied to booleans. Rust has the
+`-` unary operator which negates a number. The `!` operator negates a boolean
+and inverts every bit on an integer type (equivalent to `~` in C++ in the latter
+case). Rust has compound assignment operators as in C++, e.g., `+=`, but does
+not have increment or decrement operators (e.g., `++`).
