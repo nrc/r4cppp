@@ -70,10 +70,12 @@ fn main() {
 
 Rust has the following operators:
 
-*Numeric:* `+`, `-`, `*`, `/`, `%`\
-*Bitwise:* `|`, `&`, `^`, `<<`, `>>`\
-*Comparison:* `==`, `!=`, `>`, `<`, `>=`, `<=`\
-*Short-circuit logical:* `||`, `&&`
+|         Type          |            Operators             |
+| --------------------- | -------------------------------- |
+| Numeric               | `+`, `-`, `*`, `/`, `%`          |
+| Bitwise               | `\|`, `&`, `^`, `<<`, `>>`       |
+| Comparison            | `==`, `!=`, `>`, `<`, `>=`, `<=` |
+| Short-circuit logical | `\|\|`, `&&`                     |
 
 All of these behave as in C++, however, Rust is a bit stricter about the types
 the operators can be applied to - the bitwise operators can only be applied to
