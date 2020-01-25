@@ -57,7 +57,7 @@ So, you probably want the stable channel. If you're on Linux or OS X, the
 easiest way to get it is to run
 
 ```
-curl -sSf https://static.rust-lang.org/rustup.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 On Windows, a similarly easy way would be to run
