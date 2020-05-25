@@ -62,8 +62,6 @@ catered for.
   out of date in places, but thorough; good for looking up details.
 * [Discuss forum](http://users.rust-lang.org/) - general forum for discussion or
   questions about using and learning Rust.
-* [#rust irc channel](https://chat.mibbit.com/?server=irc.mozilla.org&channel=%23rust) - probably
-  the best place to get quick answers to your Rust questions if you like irc.
 * [StackOverflow Rust questions](https://stackoverflow.com/questions/tagged/rust) - answers
   to many beginner and advanced questions about Rust, but be careful though - Rust
   has changed *a lot* over the years and some of the answers might be very out of date.
