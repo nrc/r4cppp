@@ -17,18 +17,13 @@ its existence. Furthermore, all language features in Rust have a predictable (an
 usually small) cost.
 
 Whilst these constraints make Rust a (rare) viable alternative to C++, Rust also
-has benefits: it is memory safe - Rust's type system ensures that you don't get
-the kind of memory errors which are common in C++ - memory leaks, accessing un-
-initialised memory, dangling pointers - all are impossible in Rust. Furthermore,
-whenever other constraints allow, Rust strives to prevent other safety issues
-too - for example, all array indexing is bounds checked (of course, if you want
-to avoid the cost, you can (at the expense of safety) - Rust allows you to do
-this in unsafe blocks, along with many other unsafe things. Crucially, Rust
-ensures that unsafety in unsafe blocks stays in unsafe blocks and can't affect
-the rest of your program). Finally, Rust takes many concepts from modern
-programming languages and introduces them to the systems language space.
-Hopefully, that makes programming in Rust more productive, efficient, and
-enjoyable.
+has benefits: 
+
+- Rust is memory safe.
+- Rust's type system ensures that you don't get the kind of memory errors which are common in C++. Memory leaks, accessing un-initialised memory, dangling pointers. all are impossible in Rust. 
+- All array indexing is bounds checked (of course, if you want to avoid the cost, you can (at the expense of safety)).
+- Rust allows you to do this in unsafe blocks, along with many other unsafe things. Crucially, Rust ensures that unsafety in unsafe blocks stays in unsafe blocks and can't affect the rest of your program).
+- Finally, Rust takes many concepts from modern programming languages and introduces them to the systems language space. Hopefully, that makes programming in Rust more productive, efficient, and enjoyable.
 
 In the rest of this section we'll download and install Rust, create a minimal
 Cargo project, and implement Hello World.
