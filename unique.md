@@ -171,26 +171,26 @@ For that, Rust has borrowed pointers. I'll cover those in the next post.
 
 ##### 1
 
-In C++11 the `std::unique_ptr<T>` was introduced that may be in some aspects
-associated to Rust `Box<T>` but there are also significant differences.
+The `std::unique_ptr<T>`, introduced in C++11, is similar in some aspects
+to Rust's `Box<T>` but there are also significant differences.
 
-`std::unique_ptr<T>` like `Box<T>` automatically releases the memory being
-pointed once it goes out of the scope and has only move semantics.
+Similarities:
+* The memory pointed to by a `std::unique_ptr<T>` in C++11 and a `Box<T>` in Rust
+is automatically released once the `std::unique_ptr<T>` goes out of the scope.
+* Both C++11's `std::unique_ptr<T>` and Rust's `Box<T>` only exhibit move semantics.
 
-In some way the `let x = Box::new(75)` may be interpreted as `const auto x =
-std::unique_ptr<const int>{new int{75}};` in C++11 and `const auto x =
-std::make_unique<const int>{75};` since C++14.
+Differences:
 
-But there are still important differences between `Box<T>` and
-`std::unique_ptr<T>` that should be taken into account:
-
-1. If `std::unique_ptr<T>` is created by passing the pointer to its constructor
-   there is a possibility to have several unique pointers to the same memory
-   that is not possible with `Box<T>`
-2. Once `std::unique_ptr<T>` is moved to another variable or to function
-   dereference of this pointer causes undefined behavior that is also
-   impossible in Rust
+1. C++11 allows for a `std::unique_ptr<T>` to be constructed from an existing pointer,
+   thereby allowing multiple unique pointers to the same memory. 
+   This behaviour is not permitted with `Box<T>`.
+2. Dereferencing a `std::unique_ptr<T>` that has been moved to another variable or function,
+   causes undefined behavior in C++11. This would be caught at compile time in Rust.
 3. Mutability or immutability does not go "through" `std::unique_ptr<T>` 
    -- dereferencing a `const std::unique_ptr<T>` still yields a mutable 
    (non-`const`) reference to the underlying data. In Rust, an immutable
-   `Box<T>` does not allow mutation of the data it points to
+   `Box<T>` does not allow mutation of the data it points to.
+
+`let x = Box::new(75)` in Rust may be interpreted as `const auto x =
+std::unique_ptr<const int>{new int{75}};` in C++11 and `const auto x =
+std::make_unique<const int>{75};` in C++14.
