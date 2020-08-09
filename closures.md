@@ -90,8 +90,8 @@ fn add_42(x: i32) -> i64 {
 As we saw before, we can store a function in a variable: `let a = add_42;`. The
 most precise type of `a` cannot be written in Rust. You'll sometimes see the
 compiler render it as `fn(i32) -> i64 {add_42}` in error messages. Each function
-has its own unique and anonymous type. `fn add_41(x: i32) -> i64` has have a different
-type, even though they have the same signature.
+has its own unique and anonymous type. `fn add_41(x: i32) -> i64` has a different
+type, even though it has the same signature.
 
 We can write less precise types, for example, `let a: fn(i32) -> i64 = add_42;`.
 All function types with the same signature can be coerced to a `fn` type
