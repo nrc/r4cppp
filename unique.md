@@ -193,4 +193,4 @@ Differences:
 
 `let x = Box::new(75)` in Rust may be interpreted as `const auto x =
 std::unique_ptr<const int>{new int{75}};` in C++11 and `const auto x =
-std::make_unique<const int>{75};` in C++14.
+std::make_unique<const int>(75);` in C++14.
