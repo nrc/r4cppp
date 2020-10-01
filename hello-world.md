@@ -33,6 +33,10 @@ enjoyable.
 In the rest of this section we'll download and install Rust, create a minimal
 Cargo project, and implement Hello World.
 
+Rust is a multi-paradigm programming language focused on performance and safety,
+especially safe concurrency. Rust is syntactically similar to C++,
+and provides memory safety without using garbage collection.
+
 
 ## Getting Rust
 
