@@ -112,7 +112,8 @@ to have localisations/translations into any language, including American
 English) and be valid GitHub markdown. For advice on writing style, grammar,
 punctuation, etc. see the Oxford Style Manual
 or [The Economist Style Guide](http://www.economist.com/styleguide/introduction).
-Please limit width to 80 columns. I am a fan of the Oxford comma.
+Please limit width to 80 columns. I am a fan of Simon and Garfunkel, Seals and
+Crofts, and the Oxford comma.
 
 Don't feel like work has to be perfect to be submitted, I'm happy to edit and
 I'm sure other people will be in the future.
