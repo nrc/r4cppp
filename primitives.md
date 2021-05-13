@@ -19,8 +19,9 @@ Examples:
 fn main() {
     let x: bool = true;
     let x = 34;   // type isize
-    let x = 34u;  // type usize
-    let x: u8 = 34u8;
+    let x = 34isize;
+    let x = 34usize;
+    let x = 34u8;
     let x = 34i64;
     let x = 34f32;
 }
@@ -52,11 +53,12 @@ pointers, references, and vectors (arrays).
 Rust does not implicitly coerce numeric types. In general, Rust has much less
 implicit coercion and subtyping than C++. Rust uses the `as` keyword for
 explicit coercions and casting. Any numeric value can be cast to another numeric
-type. `as` cannot be used to convert between booleans and numeric types. E.g.,
+type. `as` cannot be used to convert from numeric types to boolean types, but
+the reverse can be done. E.g.,
 
 ```rust
 fn main() {
-    let x = 34u as isize;   // cast usize to isize
+    let x = 34usize as isize;   // cast usize to isize
     let x = 10 as f32;      // isize to float
     let x = 10.45f64 as i8; // float to i8 (loses precision)
     let x = 4u8 as u64;     // gains precision
@@ -64,8 +66,9 @@ fn main() {
     println!("`400u16 as u8` gives {}", x);
     let x = -3i8 as u8;     // 253, signed to unsigned (changes sign)
     println!("`-3i8 as u8` gives {}", x);
-    //let x = 45u as bool;  // FAILS!
-}
+    //let x = 45 as bool;  // FAILS! (use 45 != 0 instead)
+    let x = true as usize;  // cast bool to usize (gives a 1)
+}}
 ```
 
 Rust has the following operators:
