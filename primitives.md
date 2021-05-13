@@ -19,7 +19,9 @@ Examples:
 fn main() {
     let x: bool = true;
     let x = 34;   // type isize
-    let x: u8 = 34u8;
+    let x = 34isize;
+    let x = 34usize;
+    let x = 34u8;
     let x = 34i64;
     let x = 34f32;
 }
