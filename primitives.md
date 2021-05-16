@@ -6,9 +6,9 @@ similar concepts of integers, unsigned integers, and floats. However the syntax
 is a bit different. Rust uses `isize` to mean an integer and `usize` to mean an
 unsigned integer. These types are pointer sized. E.g., on a 32 bit system,
 `usize` means a 32 bit unsigned integer. Rust also has explicitly sized types
-which are `u` or `i` followed by 8, 16, 32, or 64. So, for example, `u8` is an 8
-bit unsigned integer and `i32` is a 32 bit signed integer. For floats, Rust has
-`f32` and `f64`.
+which are `u` or `i` followed by 8, 16, 32, 64, or 128. So, for example, `u8` is
+an 8 bit unsigned integer and `i32` is a 32 bit signed integer. For floats, Rust
+has `f32` and `f64`.
 
 Numeric literals can take suffixes to indicate their type (using `i` and `u`
 instead of `isize` and `usize`). If no suffix is given, Rust tries to infer the
