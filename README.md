@@ -65,6 +65,9 @@ catered for.
 * [StackOverflow Rust questions](https://stackoverflow.com/questions/tagged/rust) - answers
   to many beginner and advanced questions about Rust, but be careful though - Rust
   has changed *a lot* over the years and some of the answers might be very out of date.
+* [A Firehose of Rust](https://www.youtube.com/watch?v=IPmRDS0OSxM) - a recorded talk
+  introducing C++ programmers to how lifetimes, mutable aliasing, and move semantics work
+  in Rust
 
 
 ## Contributing
