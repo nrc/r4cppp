@@ -12,13 +12,14 @@ has `f32` and `f64`.
 
 Numeric literals can take suffixes to indicate their type (using `i` and `u`
 instead of `isize` and `usize`). If no suffix is given, Rust tries to infer the
-type. If it can't infer, it uses `isize` or `f64` (if there is a decimal point).
+type. If it can't infer, it uses `i32` or `f64` (if there is a decimal point).
 Examples:
 
 ```rust
 fn main() {
     let x: bool = true;
-    let x = 34;   // type isize
+    let x = 34;   // type i32
+    // let x = 2147483648; // error: literal out of range for `i32`
     let x = 34isize;
     let x = 34usize;
     let x = 34u8;
