@@ -10,8 +10,7 @@ which are `u` or `i` followed by 8, 16, 32, 64, or 128. So, for example, `u8` is
 an 8 bit unsigned integer and `i32` is a 32 bit signed integer. For floats, Rust
 has `f32` and `f64`.
 
-Numeric literals can take suffixes to indicate their type (using `i` and `u`
-instead of `isize` and `usize`). If no suffix is given, Rust tries to infer the
+Numeric literals can take suffixes to indicate their type. If no suffix is given, Rust tries to infer the
 type. If it can't infer, it uses `i32` or `f64` (if there is a decimal point).
 Examples:
 
