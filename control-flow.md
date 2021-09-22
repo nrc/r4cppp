@@ -12,7 +12,7 @@ functions do the same thing:
 
 ```rust
 fn foo(x: i32) -> &'static str {
-    let mut result: &'static str;
+    let result: &'static str;
     if x < 10 {
         result = "less than 10";
     } else {
@@ -29,6 +29,8 @@ fn bar(x: i32) -> &'static str {
     }
 }
 ```
+
+(Why not `mut result`? The code in `foo` makes `result` immutable, it's just initialized in two possible places. Rust can see that by the time of `return result`, it is guaranteed to have been initialized.)
 
 The first is a fairly literal translation of what you might write in C++. The
 second is better Rust style.
