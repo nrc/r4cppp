@@ -41,7 +41,7 @@ fn foo(s1: S, s2: &S) {
 ```
 
 Here `s1` is struct object passed by value and `s2` is a struct object passed by
-reference. As with method call, we use the same `.` to access fields in both, no
+reference. As with method calls, we use the same `.` to access fields in both, no
 need for `->`.
 
 Structs are initialised using struct literals. These are the name of the struct
