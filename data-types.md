@@ -195,7 +195,7 @@ One particularly common enum in Rust is `Option`. This has two variants - `Some`
 and `None`. `None` has no data and `Some` has a single field with type `T`
 (`Option` is a generic enum, which we will cover later, but hopefully the
 general idea is clear from C++). Options are used to indicate a value might be
-there or might not. Any place you use a null pointer in C++<sup>[2](#2)</sup>.
+there or might not. Any place you use a null pointer in C++<sup>[2](#2)</sup>
 to indicate a value which is in some way undefined, uninitialised, or false,
 you should probably use an Option in Rust. Using Option is safer because you
 must always check it before use; there is no way to do the equivalent of
