@@ -18,8 +18,8 @@ usually small) cost.
 
 Whilst these constraints make Rust a (rare) viable alternative to C++, Rust also
 has benefits: it is memory safe - Rust's type system ensures that you don't get
-the kind of memory errors which are common in C++ - memory leaks, accessing un-
-initialised memory, dangling pointers - all are impossible in Rust. Furthermore,
+the kind of memory errors which are common in C++ - accessing un-initialised
+memory, and dangling pointers - all are impossible in Rust. Furthermore,
 whenever other constraints allow, Rust strives to prevent other safety issues
 too - for example, all array indexing is bounds checked (of course, if you want
 to avoid the cost, you can (at the expense of safety) - Rust allows you to do
