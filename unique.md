@@ -37,7 +37,7 @@ fn foo() {
 ```
 
 Here `x` is a pointer to a location on the heap which contains the value `75`.
-`x` has type `Box<isize>`; we could have written `let x: Box<isize> =
+`x` has type `Box<i32>`; we could have written `let x: Box<i32> =
 Box::new(75);`. This is similar to writing `int* x = new int(75);` in C++.
 Unlike in C++, Rust will tidy up the memory for us, so there is no need to call
 `free` or `delete`<sup>[1](#1)</sup>. Unique pointers behave similarly to
