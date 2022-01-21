@@ -190,12 +190,13 @@ in a narrower scope, the compiler will give us an error. For example,
 ```rust
 fn foo() {
     let x = 5;
-    let mut xr = &x;  // Ok - x and xr have the same lifetime
+    let mut xr = &x;        // Ok - x and xr have the same lifetime
     {
         let y = 6;
-        //xr = &y     // Error - xr will outlive y
-    }                 // y is released here
-}                     // x and xr are released here
+        xr = &y             // Error - xr will outlive y
+    }                       // y is released here
+    println!("{?:}", xr);   // xr is used here so it outlives y. Try to comment out this line.
+}                           // x and xr are released here
 ```
 
 In the above example, xr and y don't have the same lifetime because y starts
