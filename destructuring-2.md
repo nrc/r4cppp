@@ -34,12 +34,12 @@ the old value. As examples, `i32` has copy semantics and `Box<i32>` has move
 semantics:
 
 ```rust
-    fn foo() {
-    let x = 7i;
+fn foo() {
+    let x = 7i32;
     let y = x;                // x is copied
     println!("x is {}", x);   // OK
 
-    let x = box 7i;
+    let x = Box::new(7i32);
     let y = x;                // x is moved
     //println!("x is {}", x); // error: use of moved value: `x`
 }
@@ -77,16 +77,16 @@ enum Enum1 {
 
 fn foo(x: &Enum1) {
     match *x {  // Option 1: deref here.
-        Var1 => {}
-        Var2 => {}
-        Var3 => {}
+        Enum1::Var1 => {}
+        Enum1::Var2 => {}
+        Enum1::Var3 => {}
     }
 
     match x {
         // Option 2: 'deref' in every arm.
-        &Var1 => {}
-        &Var2 => {}
-        &Var3 => {}
+        &Enum1::Var1 => {}
+        &Enum1::Var2 => {}
+        &Enum1::Var3 => {}
     }
 }
 ```
@@ -120,18 +120,18 @@ enum Enum2 {
 fn foo(x: &Enum2) {
     match *x {
         // We're ignoring nested data, so this is OK
-        Var1(..) => {}
+        Enum2::Var1(..) => {}
         // No change to the other arms.
-        Var2 => {}
-        Var3 => {}
+        Enum2::Var2 => {}
+        Enum2::Var3 => {}
     }
 
     match x {
         // We're ignoring nested data, so this is OK
-        &Var1(..) => {}
+        &Enum2::Var1(..) => {}
         // No change to the other arms.
-        &Var2 => {}
-        &Var3 => {}
+        &Enum2::Var2 => {}
+        &Enum2::Var3 => {}
     }
 }
 ```
@@ -153,7 +153,7 @@ But what about if we want to use the data nested inside `Var1`? We can't write:
 
 ```rust
 match *x {
-    Var1(y) => {}
+    Enum2::Var1(y) => {}
     _ => {}
 }
 ```
@@ -162,7 +162,7 @@ or
 
 ```rust
 match x {
-    &Var1(y) => {}
+    &Enum2::Var1(y) => {}
     _ => {}
 }
 ```
@@ -173,7 +173,9 @@ OK, because now we are not dereferencing anywhere and thus not moving any part
 of `x`. Instead we are creating a pointer which points into the interior of `x`.
 
 Alternatively, we could destructure the Box (this match is going three levels
-deep): `&Var1(box y) => {}`. This is OK because `i32` has copy semantics and `y`
+deep): `&Var1(box y) => {}` (note `box` pattern syntax is experimental as of rustc 1.58 
+and is available only in nightly version of rustc). 
+This is OK because `i32` has copy semantics and `y`
 is a copy of the `i32` inside the `Box` inside `Var1` (which is 'inside' a
 borrowed reference). Since `i32` has copy semantics, we don't need to move any
 part of `x`. We could also create a reference to the int rather than copy it:
@@ -191,13 +193,13 @@ reference-to-enum values. Now we can't use the first approach at all:
 fn bar(x: &Enum2, y: &Enum2) {
     // Error: x and y are being moved.
     // match (*x, *y) {
-    //     (Var2, _) => {}
+    //     (Enum2::Var2, _) => {}
     //     _ => {}
     // }
 
     // OK.
     match (x, y) {
-        (&Var2, _) => {}
+        (&Enum2::Var2, _) => {}
         _ => {}
     }
 }
@@ -221,7 +223,7 @@ example,
 ```rust
 fn baz(x: Enum2) {
     match x {
-        Var1(y) => {}
+        Enum2::Var1(y) => {}
         _ => {}
     }
 }
