@@ -98,8 +98,8 @@ you do the latter, you should be greeted in the console. Success!
 
 Cargo will have made a `target` directory and put the executable in there.
 
-If you want to use the compiler directly you can run `rustc src/hello.rs` which
-will create an executable called `hello`. See `rustc --help` for lots of
+If you want to use the compiler directly you can run `rustc src/main.rs` which
+will create an executable called `main`. See `rustc --help` for lots of
 options.
 
 OK, back to the code. A few interesting points - we use `fn` to define a
