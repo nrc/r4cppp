@@ -114,12 +114,12 @@ Lets change our example a little bit:
 
 ```rust
 fn main() {
-    let world = "world";
-    println!("Hello {}!", world);
+    let recipient = "world";
+    println!("Hello {}!", recipient);
 }
 ```
 
-`let` is used to introduce a variable, world is the variable name and it is a
+`let` is used to introduce a variable, recipient is the variable name and it is a
 string (technically the type is `&'static str`, but more on that later). We
 don't need to specify the type, it will be inferred for us.
 
@@ -129,29 +129,30 @@ a string if it is not one already<sup>[1](#1)</sup> (like `operator<<()` in C++)
 You can easily play around with this sort of thing - try multiple strings and
 using numbers (integer and float literals will work).
 
-If you like, you can explicitly give the type of `world`:
+If you like, you can explicitly give the type of `recipient`:
 
 ```rust
-let world: &'static str = "world";
+let recipient: &'static str = "world";
 ```
 
-In C++ we write `T x` to declare a variable `x` with type `T`. In Rust we write
+In C++ we write `T x` to declare a variable named `x` of type `T`. In Rust we write
 `x: T`, whether in `let` statements or function signatures, etc. Mostly we omit
 explicit types in `let` statements, but they are required for function
 arguments. Lets add another function to see it work:
 
 ```rust
-fn foo(_x: &'static str) -> &'static str {
+fn getRecipient(_x: &'static str) -> &'static str {
     "world"
 }
 
 fn main() {
-    println!("Hello {}!", foo("bar"));
+    println!("Hello {}!", getRecipient("foo"));
 }
 ```
 
-The function `foo` has a single argument `_x` which is a string literal (we pass
-it "bar" from `main`)<sup>[2](#2)</sup>.
+The function `getRecipient` has a single argument `_x` which is a string literal (we pass
+it "foo" from `main`). (Rust will warn us if we're not using an argument within a function, so 
+we prefix `_` to the parameter name to suppress that warning.<sup>[2](#2)</sup>)
 
 The return type for a function is given after `->`. If the function doesn't
 return anything (a void function in C++), we don't need to give a return type at
@@ -160,7 +161,7 @@ all (as in `main`). If you want to be super-explicit, you can write `-> ()`,
 
 You don't need the `return` keyword in Rust, if the last expression in a
 function body (or any other block, we'll see more of this later) is not finished
-with a semicolon, then it is the return value. So `foo` will return
+with a semicolon, then it is the return value. So, in the above example, `getRecipient` will return
 "world". The `return` keyword still exists so we can do early returns. You can
 replace `"world"` with `return "world";` and it will have the same effect.
 
@@ -189,7 +190,5 @@ with printf, there are many other options.
 
 ##### 2
 
-We don't actually use that argument in `foo`. Usually,
-Rust will warn us about this. By prefixing the argument name with `_` we avoid
-these warnings. In fact, we don't need to name the argument at all, we could
+In fact, we don't need to name the parameter at all, we could
 just use `_`.
