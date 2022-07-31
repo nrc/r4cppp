@@ -7,7 +7,7 @@ that the braces are mandatory, but parentheses around the expression being teste
 are not. Another is that `if` is an expression, so you can use it the same way
 as the ternary `?:` operator in C++ (remember from the previous section that if the last
 expression in a block is not terminated by a semi-colon, then it becomes the
-value of the block). There is no ternary `?:` in Rust. So, the following two
+value of the block).<sup>[1](#1)</sup> So, the following two
 functions do the same thing:
 
 ```rust
@@ -231,3 +231,7 @@ are always called via the `.` operator (no `->`, more on this in another post).
 We saw a few examples above (`len`, `iter`). We'll go into more detail in the
 future about how they are defined and called. Most assumptions you might make
 from C++ or Java are probably correct.
+
+
+#### 1
+There is no ternary `?:` in Rust.
