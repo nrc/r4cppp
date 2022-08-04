@@ -35,7 +35,7 @@ fn bar(x: i32) -> &'static str {
 The first is a fairly literal translation of what you might write in C++. The
 second is better Rust style.
 
-You can also write `let x = if ...`, etc.
+You can also write `let result = if x < 10 ...`, etc.
 
 
 ## Loops
