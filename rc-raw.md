@@ -7,7 +7,7 @@ similar to the new std::unique_ptr in C++ and borrowed references are the
 'default' pointer you usually reach for if you would use a pointer or reference
 in C++. Rust has a few more, rarer pointers either in the libraries or built in
 to the language. These are mostly similar to various kinds of smart pointers you
-might be used to in C++.
+might use in C++.
 
 This post took a while to write and I still don't like it. There are a lot of
 loose ends here, both in my write up and in Rust itself. I hope some will get
