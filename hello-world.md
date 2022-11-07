@@ -110,7 +110,7 @@ it is a macro. A subset of the standard library is available without needing to
 be explicitly imported/included (the prelude). The `println!` macro is included
 as part of that subset.
 
-Lets change our example a little bit:
+Let's change our example a little bit:
 
 ```rust
 fn main() {
@@ -138,7 +138,7 @@ let world: &'static str = "world";
 In C++ we write `T x` to declare a variable `x` with type `T`. In Rust we write
 `x: T`, whether in `let` statements or function signatures, etc. Mostly we omit
 explicit types in `let` statements, but they are required for function
-arguments. Lets add another function to see it work:
+arguments. Let's add another function to see it work:
 
 ```rust
 fn foo(_x: &'static str) -> &'static str {
