@@ -13,7 +13,7 @@ This post took a while to write and I still don't like it. There are a lot of
 loose ends here, both in my write up and in Rust itself. I hope some will get
 better with later posts and some will get better as the language develops. If
 you are learning Rust, you might even want to skip this stuff for now, hopefully
-you won't need it. Its really here just for completeness after the posts on
+you won't need it. It's really here just for completeness after the posts on
 other pointer types.
 
 It might feel like Rust has a lot of pointer types, but it is pretty similar to
