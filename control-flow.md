@@ -68,7 +68,7 @@ Rust has `break` and `continue` just like C++.
 
 ## For loops
 
-Rust also has `for` loops, but these are a bit different. Lets say you have a
+Rust also has `for` loops, but these are a bit different. Let's say you have a
 vector of integers and you want to print them all (we'll cover vectors/arrays,
 iterators, and generics in more detail in the future. For now, know that a
 `Vec<T>` is a sequence of `T`s and `iter()` returns an iterator from anything
