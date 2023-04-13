@@ -67,7 +67,7 @@ fn foo() {
     let mut x = 5;
     let xr = &x;           // Ok (creates an immutable ref)
     //*xr = 4;             // Error - mutating immutable ref
-    //let xr = &mut x;     // Error - there is already an immutable ref, so we
+    //let xr1 = &mut x;     // Error - there is already an immutable ref, so we
                            // can't make a mutable one
 
     let mut x = 5;
