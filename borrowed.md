@@ -117,7 +117,7 @@ fn foo() {
     {
         let y = &x;           // type: &i32
         //x = 4;              // Error - x has been borrowed
-        println!("{}", x);    // Ok - x can be read
+        println!("{} {}", y, x);    // Ok - x can be read
     }
     x = 4;                    // OK - y no longer exists
 }
