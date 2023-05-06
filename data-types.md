@@ -150,8 +150,8 @@ fn foo() {
 
 However, Rust enums are much more powerful than that. Each variant can contain
 data. Like tuples, these are defined by a list of types. In this case they are
-more like unions than enums in C++. Rust enums are tagged unions rather than untagged unions (as in C++). 
-That means you can't mistake one variant of an enum for another at runtime<sup>[1](#1)</sup>. An example:
+more like unions than enums in C++. Rust enums are tagged unions rather than untagged unions (as in C++).
+That means you can't mistake one variant of an enum for another at runtime[^1]. An example:
 
 ```rust
 enum Expr {
@@ -195,7 +195,7 @@ One particularly common enum in Rust is `Option`. This has two variants - `Some`
 and `None`. `None` has no data and `Some` has a single field with type `T`
 (`Option` is a generic enum, which we will cover later, but hopefully the
 general idea is clear from C++). Options are used to indicate a value might be
-there or might not. Any place you use a null pointer in C++<sup>[2](#2)</sup>
+there or might not. Any place you use a null pointer in C++[^2]
 to indicate a value which is in some way undefined, uninitialised, or false,
 you should probably use an Option in Rust. Using Option is safer because you
 must always check it before use; there is no way to do the equivalent of
@@ -355,10 +355,6 @@ the whole struct. Think of them like single threaded locks, finer grained
 locking is better since you are more likely to avoid colliding on a lock.
 
 
-##### 1
+[^1]: In C++17 there is `std::variant<T>` type that is closer to Rust enums than unions.
 
-In C++17 there is `std::variant<T>` type that is closer to Rust enums than unions.
-
-##### 2
-
-Since C++17 `std::optional<T>` is the best alternative of Option in Rust.
+[^2]: Since C++17 `std::optional<T>` is the best alternative of Option in Rust.

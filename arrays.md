@@ -21,7 +21,7 @@ println!("The second element is {}", a[1]);
 
 You'll notice that array indexing is zero-based, just like C.
 
-However, unlike C/C++<sup>[1](#1)</sup>, array indexing is bounds checked. In
+However, unlike C/C++[^1], array indexing is bounds checked. In
 fact all access to arrays is bounds checked, which is another way Rust is a
 safer language.
 
@@ -269,7 +269,5 @@ array initialisers, the length must be an integer constant expression. For
 `vec!`, it can be any expression with type `usize`.
 
 
-##### 1
-
-In C++11 there is `std::array<T, N>` that provides boundary checking when
+[^1]: In C++11 there is `std::array<T, N>` that provides boundary checking when
 `at()` method is used.
