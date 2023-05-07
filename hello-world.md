@@ -125,7 +125,7 @@ don't need to specify the type, it will be inferred for us.
 
 Using `{}` in the `println!` statement is like using `%s` in printf. In fact, it
 is a bit more general than that because Rust will try to convert the variable to
-a string if it is not one already<sup>[1](#1)</sup> (like `operator<<()` in C++).
+a string if it is not one already[^1] (like `operator<<()` in C++).
 You can easily play around with this sort of thing - try multiple strings and
 using numbers (integer and float literals will work).
 
@@ -151,7 +151,7 @@ fn main() {
 ```
 
 The function `foo` has a single argument `_x` which is a string literal (we pass
-it "bar" from `main`)<sup>[2](#2)</sup>.
+it "bar" from `main`)[^2].
 
 The return type for a function is given after `->`. If the function doesn't
 return anything (a void function in C++), we don't need to give a return type at
@@ -180,16 +180,12 @@ further down the stack by mistake. These are fairly minor things, but I hope
 they illustrate the philosophy behind the design of Rust.
 
 
-##### 1
-
-This is a programmer specified conversion which uses the `Display` trait, which
+[^1]: This is a programmer specified conversion which uses the `Display` trait, which
 works a bit like `toString` in Java. You can also use `{:?}` which gives a
 compiler generated representation which is sometimes useful for debugging. As
 with printf, there are many other options.
 
-##### 2
-
-We don't actually use that argument in `foo`. Usually,
+[^2]: We don't actually use that argument in `foo`. Usually,
 Rust will warn us about this. By prefixing the argument name with `_` we avoid
 these warnings. In fact, we don't need to name the argument at all, we could
 just use `_`.
