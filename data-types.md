@@ -140,9 +140,9 @@ enum E1 {
 }
 
 fn foo() {
-    let x: E1 = Var2;
+    let x: E1 = E1::Var2;
     match x {
-        Var2 => println!("var2"),
+        E1::Var2 => println!("var2"),
         _ => {}
     }
 }
