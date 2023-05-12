@@ -323,7 +323,7 @@ fn foo<F>(f: F)
 
 In these cases, we *need* higher-ranked types. If we added a lifetime parameter
 to `foo` instead, we could never infer a correct lifetime. To see why, let's
-look at how it might work, consider `fn foo<'a, F: Fn(&'a i32')> ...`. Rust
+look at how it might work, consider `fn foo<'a, F: Fn(&'a i32)> ...`. Rust
 requires that any lifetime parameter must outlive the item it is declared on (if
 this were not the case, an argument with that lifetime could be used inside that
 function, where it is not guaranteed to be live). In the body of `foo` we use
