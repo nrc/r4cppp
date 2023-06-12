@@ -1,6 +1,6 @@
 #![feature(rustc_private)]
 
-extern crate arena;
+extern crate typed_arena;
 
 mod rc_graph;
 mod ref_graph;
