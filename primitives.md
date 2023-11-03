@@ -68,7 +68,7 @@ fn main() {
     println!("`-3i8 as u8` gives {}", x);
     //let x = 45 as bool;  // FAILS! (use 45 != 0 instead)
     let x = true as usize;  // cast bool to usize (gives a 1)
-}}
+}
 ```
 
 Rust has the following operators:
