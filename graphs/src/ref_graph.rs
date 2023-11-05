@@ -1,7 +1,7 @@
 
 use std::cell::UnsafeCell;
 use std::collections::HashSet;
-use arena::TypedArena;
+use typed_arena::Arena;
 
 struct Node<'a> {
     datum: &'static str,
@@ -9,7 +9,7 @@ struct Node<'a> {
 }
 
 impl<'a> Node<'a> {
-    fn new<'b>(datum: &'static str, arena: &'b TypedArena<Node<'b>>) -> &'b Node<'b> {
+    fn new<'b>(datum: &'static str, arena: &'b Arena<Node<'b>>) -> &'b Node<'b> {
         arena.alloc(Node {
             datum: datum,
             edges: UnsafeCell::new(Vec::new()),
@@ -42,7 +42,7 @@ fn foo<'a>(node: &'a Node<'a>) {
     println!("foo: {}", node.datum);
 }
 
-fn init<'a>(arena: &'a TypedArena<Node<'a>>) ->&'a Node<'a> {
+fn init<'a>(arena: &'a Arena<Node<'a>>) ->&'a Node<'a> {
     let root = Node::new("A", arena);
 
     let b = Node::new("B", arena);
@@ -65,7 +65,7 @@ fn init<'a>(arena: &'a TypedArena<Node<'a>>) ->&'a Node<'a> {
 }
 
 pub fn main() {
-    let arena = TypedArena::new();
+    let arena = Arena::new();
     let g = init(&arena);
     g.traverse(&|d| println!("{}", d), &mut HashSet::new());
     foo(g.first());
