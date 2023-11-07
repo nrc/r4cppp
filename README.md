@@ -68,6 +68,8 @@ catered for.
 * [A Firehose of Rust](https://www.youtube.com/watch?v=IPmRDS0OSxM) - a recorded talk
   introducing C++ programmers to how lifetimes, mutable aliasing, and move semantics work
   in Rust
+* [CodeCrafters](https://app.codecrafters.io/tracks/rust) - Unique practice projects for
+  Rust mastery, e.g Build your own Git, Docker, SQLite, etc
 
 
 ## Contributing
