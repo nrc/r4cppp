@@ -36,7 +36,7 @@ Cargo project, and implement Hello World.
 
 ## Getting Rust
 
-You can get Rust from [http://www.rust-lang.org/install.html](http://www.rust-lang.org/install.html).
+You can get Rust from [http://www.rust-lang.org/tools/install](http://www.rust-lang.org/tools/install).
 The downloads from there include the Rust compiler, standard libraries, and
 Cargo, which is a package manager and build tool for Rust.
 
@@ -66,7 +66,7 @@ On Windows, a similarly easy way would be to run
 choco install rust
 ```
 
-For other ways to install, see [http://www.rust-lang.org/install.html](http://www.rust-lang.org/install.html).
+For other ways to install, see [http://www.rust-lang.org/tools/install](http://www.rust-lang.org/tools/install).
 
 You can find the source at [github.com/rust-lang/rust](https://github.com/rust-lang/rust).
 To build the compiler, run `./configure && make rustc`. See
