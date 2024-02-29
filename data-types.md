@@ -140,9 +140,9 @@ enum E1 {
 }
 
 fn foo() {
-    let x: E1 = Var2;
+    let x: E1 = E1::Var2;
     match x {
-        Var2 => println!("var2"),
+        E1::Var2 => println!("var2"),
         _ => {}
     }
 }
@@ -161,7 +161,7 @@ enum Expr {
 }
 
 fn foo() {
-    let x = Or(true, false);   // x has type Expr
+    let x = Expr::Or(true, false);   // x has type Expr
 }
 ```
 
@@ -175,8 +175,8 @@ destructure data next time. Here's an example:
 ```rust
 fn bar(e: Expr) {
     match e {
-        Add(x, y) => println!("An `Add` variant: {} + {}", x, y),
-        Or(..) => println!("An `Or` variant"),
+        Expr::Add(x, y) => println!("An `Add` variant: {} + {}", x, y),
+        Expr::Or(..) => println!("An `Or` variant"),
         _ => println!("Something else (in this case, a `Lit`)"),
     }
 }
