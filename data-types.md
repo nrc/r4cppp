@@ -66,7 +66,7 @@ struct R {
 }
 ```
 
-If we didn't have the `Option` in the above struct, there would be no way to
+If we didn't have the `Box` in the above struct, there would be no way to
 instantiate the struct and Rust would signal an error.
 
 Structs with no fields do not use braces in either their definition or literal
