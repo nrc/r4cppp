@@ -114,8 +114,10 @@ English (British English, not American English; although I would be very happy
 to have localisations/translations into any language, including American
 English) and be valid GitHub markdown. For advice on writing style, grammar,
 punctuation, etc. see the Oxford Style Manual
-or [The Economist Style Guide](http://www.economist.com/styleguide/introduction).
+or [The Economist Style Guide][economist-style-guide].
 Please limit width to 80 columns. I am a fan of the Oxford comma.
+
+[economist-style-guide]: https://www.economist.com/sites/default/files/pdfs/style_guide_12.pdf
 
 Don't feel like work has to be perfect to be submitted, I'm happy to edit and
 I'm sure other people will be in the future.
