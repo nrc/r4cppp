@@ -84,7 +84,7 @@ fn print_all(all: Vec<i32>) {
 
 TODO also &all/all instead of all.iter()
 
-If we want to index over the indices of `all` (a bit more like a standard C++
+If we want to iterate over the indices of `all` (a bit more like a standard C++
 for loop over an array), you could do
 
 ```rust
