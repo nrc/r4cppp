@@ -402,7 +402,8 @@ by the compiler, no annotation is necessary). If a variable is moved into a
 closure, i.e., it is captured by value (either because of an explicit `move` or
 due to inference), then the closure will have a `FnOnce` type. It would be unsafe
 to call such a closure multiple times because the captured variable would be
-moved more than once.
+moved more than once; this is because the moving happens at the time the closure
+is called, not at the time the closure is constructed.
 
 Rust will do its best to infer the most flexible type for the closure if it can.
 
