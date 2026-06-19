@@ -57,7 +57,12 @@ fn foo(sos: SomeOtherStruct) {
 Structs cannot be recursive; that is, you can't have cycles of struct names
 involving definitions and field types. This is because of the value semantics of
 structs. So for example, `struct R { r: Option<R> }` is illegal and will cause a
-compiler error (see below for more about Option). If you need such a structure
+compiler error (see below for more about Option).
+One way to think about this is that the compiler needs to infer the size of a struct at compilation.
+If a struct contains itself, there would be a self-contradiction in the size inference:
+The size of `R` needs to be the same as one of its memory fields, but at the same time adds size overhead on top of that field (larger than one field).
+
+If you need such a structure
 then you should use some kind of pointer; cycles with pointers are allowed:
 
 ```rust
@@ -66,8 +71,9 @@ struct R {
 }
 ```
 
-If we didn't have the `Option` in the above struct, there would be no way to
-instantiate the struct and Rust would signal an error.
+Note that using a pointer `Box` here alone solves the size inference problem but is not enough.
+Without `Option`, following the decomposition of `R` depending on another `R`, the regress would be infinite.
+There must be eventually an `R` that does not depend on another `R` to break the cycle.
 
 Structs with no fields do not use braces in either their definition or literal
 use. Definitions do need a terminating semi-colon though, presumably just to
@@ -87,8 +93,7 @@ Tuples are anonymous, heterogeneous sequences of data. As a type, they are
 declared as a sequence of types in parentheses. Since there is no name, they are
 identified by structure. For example, the type `(i32, i32)` is a pair of
 integers and `(i32, f32, S)` is a triple. Tuple values are initialised in the
-same way as tuple types are declared, but with values instead of types for the
-components, e.g., `(4, 5)`. An example:
+same way as tuple types are declared, in the sense that you just directly put values into a pair of parentheses. An example:
 
 ```rust
 // foo takes a struct and returns a tuple
@@ -107,7 +112,6 @@ fn bar(x: (i32, i32)) {
 ```
 
 We'll talk more about destructuring next time.
-
 
 ## Tuple structs
 
@@ -149,7 +153,7 @@ fn foo() {
 ```
 
 However, Rust enums are much more powerful than that. Each variant can contain
-data. Like tuples, these are defined by a list of types. In this case they are
+data. Like tuples, each variant is identified by a list of types. In this case they are
 more like unions than enums in C++. Rust enums are tagged unions rather than untagged unions (as in C++).
 That means you can't mistake one variant of an enum for another at runtime[^1]. An example:
 
@@ -223,7 +227,7 @@ Here, the parent field could be either a `None` or a `Some` containing an
 you usually would.
 
 
-There are also convenience methods on Option, so you could write the body of
+There are also convenient methods on Option, so you could write the body of
 `is_root` as `node.parent.is_none()` or `!node.parent.is_some()`.
 
 ## Inherited mutability and Cell/RefCell
@@ -308,14 +312,17 @@ is not much to go wrong.
 
 Use RefCell for types which have move semantics, that means nearly everything in
 Rust, struct objects are a common example. RefCell is also created using `new`
-and has a `set` method. To get the value in a RefCell, you must borrow it using
-the borrow methods (`borrow`, `borrow_mut`, `try_borrow`, `try_borrow_mut`)
-these will give you a borrowed reference to the object in the RefCell. These
-methods follow the same rules as static borrowing - you can only have one
-mutable borrow, and can't borrow mutably and immutably at the same time.
-However, rather than a compile error you get a runtime failure. The `try_`
-variants return an Option - you get `Some(val)` if the value can be borrowed and
-`None` if it can't. If a value is borrowed, calling `set` will fail too.
+and has a `set` method.
+
+To **get** the value in a RefCell, you must borrow it using
+the borrow methods (`borrow`, `borrow_mut`, `try_borrow`, `try_borrow_mut`).
+However, to **set** the value in a RefCell, you must call `set` directly on a `RefCell`.
+This requirement ensures a strong consistency guarantee---read repeatability[^3]:
+
+1. `set`, itself an atomic operation, ensures that the value is not borrowed (mutably or immutably) before changing it.
+2. Modification through mutable reference is controlled by borrowing rules which are enforced at runtime: Only one mutable reference can exist at a time.
+
+The `try_` variants return an Option - you get `Some(val)` if the value can be borrowed and `None` if it can't.
 
 Here's an example using a ref-counted pointer to a RefCell (a common use-case):
 
@@ -335,7 +342,7 @@ fn foo(x: Rc<RefCell<S>>) {
     }
 
     let mut s = x.borrow_mut(); // OK, the earlier borrows are out of scope
-    s.field = 45;
+    s.field = 45; // mutable reference s allow x to be modified through s
     // println!("The field {}", x.borrow().field); // Error - can't mut and immut borrow
     println!("The field {}", s.field);
 }
@@ -358,3 +365,5 @@ locking is better since you are more likely to avoid colliding on a lock.
 [^1]: In C++17 there is `std::variant<T>` type that is closer to Rust enums than unions.
 
 [^2]: Since C++17 `std::optional<T>` is the best alternative of Option in Rust.
+
+[^3]: Read repeatability means that one transaction (in the database world) or one owner within a scope (in Rust world) can read the same value multiple times and get the same result each time. This means that no other transaction or owner can change the value in between reads.
