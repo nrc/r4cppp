@@ -45,25 +45,50 @@ fn foo() {
 ```
 
 Like values, borrowed references are immutable by default. You can also use
-`&mut` to take a mutable reference, or to denote mutable reference types.
+`&mut` to take a mutable reference, or to denote mutable reference types. There are 3 levels of mutability here:
+
+- The data, defined by `let x = 5` or `let mut x = 5`.
+- The reference, defined by `let xr = &x` or `let xr = &mut x`.
+- The binding of the reference, defined by `let xr = &x` or `let mut xr2 = &x`. Its mutability defines whether the reference can be changed to point to another value.
+
+The reference can only be mutable if the data is mutable, as the mutability of the reference suggests whether the data can be modified through the reference.
+This is similar to unique pointers.
+The mutability of the binding of the reference is independent of the mutability of the reference itself or the data.
+This is similar to C++ where pointers can be const (or not) independently of the data they point to.
+This is in contrast to unique pointers, where the mutability of the pointer is linked to the mutability of the data.
+
+```rust
+fn bar(x: &i32) { ... }
+fn bar_mut(x: &mut i32) { ... }  // &mut i32 is a reference through which
+                                 // the i32 data can be mutated
+
+fn foo() {
+    let x = 5;
+    //let xr = &mut x;     // Error - can't make a mutable reference to an
+                           // immutable variable
+    let mut xr = &x;       // Ok (creates a mutable binding to an immutable ref)
+    let xr = &x;           // Ok (creates an immutable binding to an immutable ref)
+    //xr = &mut y;        // Error xr is immutable
+    bar(xr);
+    //bar_mut(xr);         // Error - expects a mutable ref
+
+    let mut x = 5;
+    let xr = &x;           // Ok (creates an immutable ref)
+    let xr = &mut x;       // Ok (creates a mutable ref)
+    *xr = 4;               // Ok, x is mutable through xr
+    
+    bar(xr);               // Ok
+    bar_mut(xr);           // Ok
+}
+```
+
 Mutable borrowed references are unique (you can only take a single mutable
 reference to a value, and you can only have a mutable reference if there are no
 immutable references). You can use a mutable reference where an immutable one is
 wanted, but not vice versa. Putting all that together in an example:
 
 ```rust
-fn bar(x: &i32) { ... }
-fn bar_mut(x: &mut i32) { ... }  // &mut i32 is a reference to an i32 which
-                                 // can be mutated
-
 fn foo() {
-    let x = 5;
-    //let xr = &mut x;     // Error - can't make a mutable reference to an
-                           // immutable variable
-    let xr = &x;           // Ok (creates an immutable ref)
-    bar(xr);
-    //bar_mut(xr);         // Error - expects a mutable ref
-
     let mut x = 5;
     let xr = &x;           // Ok (creates an immutable ref)
     //*xr = 4;             // Error - mutating immutable ref
@@ -76,40 +101,17 @@ fn foo() {
     //let xr2 = &x;        // Error - there is already a mutable ref, so we
                            // can't make an immutable one
     //let xr2 = &mut x;    // Error - can only have one mutable ref at a time
-    bar(xr);               // Ok
-    bar_mut(xr);           // Ok
 }
+
 ```
 
-Note that the reference may be mutable (or not) independently of the mutableness
-of the variable holding the reference. This is similar to C++ where pointers can
-be const (or not) independently of the data they point to. This is in contrast
-to unique pointers, where the mutableness of the pointer is linked to the
-mutableness of the data. For example,
+If a mutable value is borrowed in the same scope, the original value (`x` above) becomes immutable while being borrowed (by `xr` above).
+`x` can only be changed through `xr`.
+If a mutable value is borrowed in a different scope, it becomes immutable while in that scope.
+This is to ensure at any given time, there is only one mutable reference to a value, including the original value itself.
 
-```rust
-fn foo() {
-    let mut x = 5;
-    let mut y = 6;
-    let xr = &mut x;
-    //xr = &mut y;        // Error xr is immutable
-
-    let mut x = 5;
-    let mut y = 6;
-    let mut xr = &mut x;
-    xr = &mut y;          // Ok
-
-    let x = 5;
-    let y = 6;
-    let mut xr = &x;
-    xr = &y;              // Ok - xr is mut, even though the referenced data is not
-}
-```
-
-If a mutable value is borrowed, it becomes immutable for the duration of the
-borrow. Once the borrowed pointer goes out of scope, the value can be mutated
-again. This is in contrast to unique pointers, which once moved can never be
-used again. For example,
+Once the borrowed pointer goes out of scope, the value can be mutated again.
+This is in contrast to unique pointers, which once moved can never be used again. For example,
 
 ```rust
 fn foo() {
